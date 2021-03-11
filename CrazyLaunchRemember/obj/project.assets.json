@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ikuba\\source\\repos\\CrazyLaunchRemember\\CrazyLaunchRemember\\CrazyLaunchRemember.csproj",
+      "projectUniqueName": "C:\\Users\\ikuba\\Source\\Repos\\CrazyLaunch-Remeber\\CrazyLaunchRemember\\CrazyLaunchRemember.csproj",
       "projectName": "CrazyLaunchRemember",
-      "projectPath": "C:\\Users\\ikuba\\source\\repos\\CrazyLaunchRemember\\CrazyLaunchRemember\\CrazyLaunchRemember.csproj",
+      "projectPath": "C:\\Users\\ikuba\\Source\\Repos\\CrazyLaunch-Remeber\\CrazyLaunchRemember\\CrazyLaunchRemember.csproj",
       "packagesPath": "C:\\Users\\ikuba\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ikuba\\source\\repos\\CrazyLaunchRemember\\CrazyLaunchRemember\\obj\\",
+      "outputPath": "C:\\Users\\ikuba\\Source\\Repos\\CrazyLaunch-Remeber\\CrazyLaunchRemember\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ikuba\\AppData\\Roaming\\NuGet\\NuGet.Config",
