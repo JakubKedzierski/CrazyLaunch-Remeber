@@ -6,7 +6,11 @@ namespace CrazyLaunchRemember
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Launch launch = new Launch();
+            launch.location = "Cape Carnavel";
+            Console.WriteLine(launch.location);
+
+
         }
     }
 }
