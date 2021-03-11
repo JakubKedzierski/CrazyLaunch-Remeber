@@ -9,7 +9,7 @@ namespace CrazyLaunchRemember
             Launch launch = new Launch();
             launch.location = "Cape Carnavel";
             Console.WriteLine(launch.location);
-
+              
 
         }
     }
