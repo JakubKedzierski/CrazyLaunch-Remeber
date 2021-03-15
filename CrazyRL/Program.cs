@@ -14,8 +14,13 @@ namespace CrazyRL
         //[STAThread]
         static void Main()
         {
-            APIParser a = new APIParser();
-            a.downloadAPI();
+            APIParser api = new APIParser();
+            api.downloadAPI();
+            
+            foreach(var stuff in api.launchList)
+            {
+                Console.WriteLine(stuff);
+            }
 
            /*
             Application.EnableVisualStyles();
