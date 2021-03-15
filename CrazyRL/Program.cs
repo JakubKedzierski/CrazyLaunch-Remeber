@@ -11,12 +11,17 @@ namespace CrazyRL
         /// <summary>
         /// Główny punkt wejścia dla aplikacji.
         /// </summary>
-        [STAThread]
+        //[STAThread]
         static void Main()
         {
+            APIParser a = new APIParser();
+            a.downloadAPI();
+
+           /*
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
-        }
+           */    
+    }
     }
 }
