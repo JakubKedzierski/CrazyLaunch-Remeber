@@ -13,6 +13,7 @@ using Nancy.Json;
 using Nancy.Json.Simple;
 using System.Net;
 
+
 namespace CrazyRL
 {
     class APIParser
@@ -22,7 +23,7 @@ namespace CrazyRL
 
         public APIParser()
         {
-            launchList = null;
+            launchList = null; 
         }
 
         /// <summary>
