@@ -14,19 +14,19 @@ namespace CrazyRL
         //[STAThread]
         static void Main()
         {
-            APIParser api = new APIParser();
+            /*APIParser api = new APIParser();
             api.downloadAPI();
             
             foreach(var stuff in api.launchList)
             {
                 Console.WriteLine(stuff);
             }
-
-           /*
+            */
+           
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
-           */    
-    }
+            Application.Run(new ViewController());
+               
+        }
     }
 }
