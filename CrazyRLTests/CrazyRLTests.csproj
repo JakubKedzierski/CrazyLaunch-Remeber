@@ -61,6 +61,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="APIParserApiParserTest.cs" />
+    <Compile Include="LaunchLaunchTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

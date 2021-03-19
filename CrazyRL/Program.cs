@@ -22,6 +22,7 @@ namespace CrazyRL
                 Console.WriteLine(stuff);
             }
 
+
            /*
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

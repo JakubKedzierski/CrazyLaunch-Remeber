@@ -27,7 +27,20 @@ namespace CrazyRL
 
         public override bool Equals(object obj)
         {
-            throw new NotImplementedException();
+            if (obj == null || GetType() != obj.GetType())
+                return false;
+
+            Launch launch = (Launch)obj;
+            if (string.Compare(launch.name,name) != 0) return false ;
+            if (string.Compare(launch.status, status) != 0) return false;
+            if (string.Compare(launch.windowStart, windowStart) != 0) return false;
+            if (string.Compare(launch.windowEnd, windowEnd) != 0) return false;
+            if (string.Compare(launch.launchProvider, launchProvider) != 0) return false;
+            if (string.Compare(launch.rocketFullName, rocketFullName) != 0) return false;
+            if (string.Compare(launch.location, location) != 0) return false;
+            if (string.Compare(launch.locationGoogleMapsUrl, locationGoogleMapsUrl) != 0) return false;
+
+            return true;
         }
     }
 }

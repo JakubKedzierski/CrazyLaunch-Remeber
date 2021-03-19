@@ -26,7 +26,7 @@ namespace CrazyRL.Tests
         }
 
         [TestMethod()]
-        public void parseLaunchRequesttestIfLaunchRequestCreateProperLaunchObject()
+        public void testIfLaunchRequestCreateProperLaunchObjectInList()
         {
             apiResponse = File.ReadAllText("ApiTypicalResponse.txt");
             if (apiResponse == null) throw new AssertFailedException();
