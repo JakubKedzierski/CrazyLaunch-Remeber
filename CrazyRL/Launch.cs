@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CrazyRL
 {
-    class Launch
+    public class Launch
     {
 
         public String name { get; set; }

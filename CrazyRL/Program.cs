@@ -15,9 +15,9 @@ namespace CrazyRL
         static void Main()
         {
             APIParser api = new APIParser();
-            api.downloadAPI();
+            api.getApiResponse();
             
-            foreach(var stuff in api.launchList)
+            foreach(var stuff in api.parseLaunchRequest())
             {
                 Console.WriteLine(stuff);
             }
