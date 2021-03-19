@@ -41,7 +41,7 @@ namespace CrazyRL
             progressBar1.Visible = true;
             buttonUpFromNet.Enabled = false;
  
-            parser.downloadAPI();
+            parser.getApiResponse();
             progressBar1.Value = 100;
             label1.Text = "Pobieranie zakończone";
 

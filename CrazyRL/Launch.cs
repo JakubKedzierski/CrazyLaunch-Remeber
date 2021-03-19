@@ -24,5 +24,10 @@ namespace CrazyRL
                 "\nwindow ends: " + windowEnd + "\nlaunch provider: " + launchProvider + "\nrocket full name: " +
                 rocketFullName + "\nlocation: " + location + "\nGoogle Maps Url: " + locationGoogleMapsUrl +"\n";
         }
+
+        public override bool Equals(object obj)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
