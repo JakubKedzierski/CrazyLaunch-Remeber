@@ -9,7 +9,7 @@ namespace CrazyRL
     public class Launch
     {
 
-        public int launchId { get; set; }
+        public int LaunchId { get; set; }
         public String name { get; set; }
         public String status { get; set; }
         public String windowStart { get; set; }
@@ -21,7 +21,7 @@ namespace CrazyRL
 
         public override string ToString()
         {
-            return "launch Id: " + launchId + "\nname: " + name + "\nstatus: " + status + "\nwindow starts: " + windowStart +
+            return "launch Id: " + LaunchId + "\nname: " + name + "\nstatus: " + status + "\nwindow starts: " + windowStart +
                 "\nwindow ends: " + windowEnd + "\nlaunch provider: " + launchProvider + "\nrocket full name: " +
                 rocketFullName + "\nlocation: " + location + "\nGoogle Maps Url: " + locationGoogleMapsUrl +"\n";
         }
@@ -32,7 +32,7 @@ namespace CrazyRL
                 return false;
 
             Launch launch = (Launch)obj;
-            if (launchId != launch.launchId) return false;
+            if (LaunchId != launch.LaunchId) return false;
             if (string.Compare(launch.name,name) != 0) return false ;
             if (string.Compare(launch.status, status) != 0) return false;
             if (string.Compare(launch.windowStart, windowStart) != 0) return false;

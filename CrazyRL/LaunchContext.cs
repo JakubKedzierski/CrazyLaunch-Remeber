@@ -9,9 +9,9 @@ namespace CrazyRL
 {
     public class LaunchContext: DbContext
     {
-        public LaunchContext(): base()
+        public LaunchContext(): base("CrazyLaunchRemember Database")
         {
-            
+            Database.SetInitializer<LaunchContext>(new DropCreateDatabaseIfModelChanges<LaunchContext>());
         }
 
         public DbSet<Launch> launches { get; set; } 
