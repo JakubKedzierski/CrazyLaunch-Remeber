@@ -15,7 +15,9 @@ using System.Net;
 
 
 namespace CrazyRL
-{
+{   /// <summary>
+    /// Parsing class - it allows to connect to specyfied API, download json file with launch information and parse this response
+    /// </summary>
     public class APIParser
     {
         private const string URL = "https://lldev.thespacedevs.com/2.0.0/launch";

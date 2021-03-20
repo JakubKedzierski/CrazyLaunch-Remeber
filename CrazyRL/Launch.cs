@@ -5,7 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CrazyRL
-{
+{   
+    /// <summary>
+    /// Domain class representing rocket launch
+    /// </summary>
     public class Launch
     {
 
@@ -19,6 +22,7 @@ namespace CrazyRL
         public String location { get; set; }
         public String locationGoogleMapsUrl { get; set; }
 
+
         public override string ToString()
         {
             return "launch Id: " + LaunchId + "\nname: " + name + "\nstatus: " + status + "\nwindow starts: " + windowStart +
@@ -26,6 +30,11 @@ namespace CrazyRL
                 rocketFullName + "\nlocation: " + location + "\nGoogle Maps Url: " + locationGoogleMapsUrl +"\n";
         }
 
+        /// <summary>
+        /// Comparing two object if they are equal 
+        /// </summary>
+        /// <param name="obj"></param> 
+        /// <returns></returns>
         public override bool Equals(object obj)
         {
             if (obj == null || GetType() != obj.GetType())
