@@ -16,11 +16,20 @@ namespace CrazyRL
         {
             APIParser api = new APIParser();
             api.getApiResponse();
-            
-            foreach(var stuff in api.parseLaunchRequest())
+            var launches = api.parseLaunchRequest();
+
+            using (var context = new LaunchContext())
             {
-                Console.WriteLine(stuff);
+                var launch = new Launch() { location = "Zanzibar" };
+                context.launches.Add(launch);
+                context.SaveChanges();
             }
+
+
+                foreach (var stuff in launches)
+                {
+                    Console.WriteLine(stuff);
+                }
 
 
            /*

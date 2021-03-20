@@ -41,7 +41,7 @@ namespace CrazyRL.Tests
             launch.launchProvider = "Strategic Missile Troops";
             launch.rocketFullName = "Vostok-K";
             launch.location = "Baikonur Cosmodrome, Republic of Kazakhstan";
-            launch.locationGoogleMapsUrl = "https://www.google.com/maps/place/45Â°55'12.0\"N + 63Â°20'31.2\"E";
+            launch.locationGoogleMapsUrl = "https://www.google.com/maps/place/45Â°55'12.0\"N+63Â°20'31.2\"E";
 
             Assert.IsTrue(launchList.Contains(launch));
 

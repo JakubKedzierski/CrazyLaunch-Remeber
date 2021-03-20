@@ -51,7 +51,9 @@ namespace CrazyRL
         }
 
         /// <summary>
-        /// Start parsing launch request using api response that have to be earlier downloaded 
+        /// Start parsing launch request using api response that have to be earlier downloaded by method getApiResponse()
+        /// 
+        /// If failed throws InvalidOperationException
         /// </summary>
         public List<Launch> parseLaunchRequest()
         {
@@ -68,6 +70,7 @@ namespace CrazyRL
         /// <summary>
         /// Parse jsonResponse and create Launch objects 
         /// 
+        /// if failed throws one ouf exceptions: SerializationException,KeyNotFoundException
         /// </summary>
         /// <param name="jsonApiResponse"></param> json response for launch request. Response must have proper composition
         public List<Launch> parseLaunchRequest(String jsonApiResponse)
