@@ -28,7 +28,7 @@ namespace CrazyRL
 
 
         /// <summary>
-        /// Configure default procedures for mapped fields
+        /// Configure default procedures for mapped fields like insert,delte,update
         /// </summary>
         /// <param name="modelBuilder"></param> model builder
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

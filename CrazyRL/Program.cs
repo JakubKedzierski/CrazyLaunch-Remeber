@@ -20,17 +20,29 @@ namespace CrazyRL
 
             using (var context = new LaunchContext())
             {
-                var launch = new Launch() { location = "Zanzibar" };
-                context.launches.Add(launch);
+
+                
+                foreach(var launch in launches) {
+                    context.launches.Add(launch);
+                }
                 context.SaveChanges();
+                
+                foreach (var launch in context.launches)
+                {
+                    Console.WriteLine(launch);
+                }
+                
+                //var launch = new Launch() { location = "Zanzibar" };
+                //context.launches.Add(launch);
+                //context.SaveChanges();
             }
 
-
+            /*
                 foreach (var stuff in launches)
                 {
                     Console.WriteLine(stuff);
                 }
-
+            */
 
            /*
             Application.EnableVisualStyles();
