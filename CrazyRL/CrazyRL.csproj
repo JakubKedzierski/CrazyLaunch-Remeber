@@ -81,6 +81,9 @@
     <Compile Include="APIParser.cs" />
     <Compile Include="Launch.cs" />
     <Compile Include="LaunchContext.cs" />
+    <Compile Include="ListsMngr.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewController.cs">

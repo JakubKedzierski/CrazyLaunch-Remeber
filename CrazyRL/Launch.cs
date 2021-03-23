@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace CrazyRL
 {   
     /// <summary>
-    /// Domain class representing rocket launch
+    /// Domain class representing rocket launch.
     /// </summary>
     public class Launch
     {
@@ -31,7 +31,7 @@ namespace CrazyRL
         }
 
         /// <summary>
-        /// Comparing two object if they are equal 
+        /// Metoda porównująca, czy dwa loty są tożsame.
         /// </summary>
         /// <param name="obj"></param> 
         /// <returns></returns>
@@ -52,6 +52,20 @@ namespace CrazyRL
             if (string.Compare(launch.locationGoogleMapsUrl, locationGoogleMapsUrl) != 0) return false;
 
             return true;
+        }
+
+        /// <summary>
+        /// Metoda potrzebna do zniwelowania warninga powstałego po przeciążeniu Equals.
+        /// </summary>
+        /// <returns></returns>
+        public override int GetHashCode() { return LaunchId; }
+
+        /// <summary>
+        /// Metoda zwracająca krótki zestaw informacji - sp. do wyświetlenia na liście.
+        /// </summary>
+        public string[] ShortData
+        {
+            get { return new string[] { this.LaunchId.ToString(), this.name, this.rocketFullName, this.windowStart }; }
         }
     }
 }

@@ -10,25 +10,24 @@ using System.Windows.Forms;
 
 namespace CrazyRL
 {
+
+    /// <summary>
+    /// Klasa zarządzająca oknem programu. Część odpowiedzialna za przerwania pochodzące od działań wykonanych na elementach interfejsu użytkownika.
+    /// </summary>
     public partial class ViewController : MetroFramework.Forms.MetroForm
     {
 
-        protected APIParser api = new APIParser();
+        private APIParser api = new APIParser();
 
         public ViewController()
         {
             InitializeComponent();
-
-            allLaunchesList.View = View.Details;
-            allLaunchesList.Columns.Add("Name");
-            allLaunchesList.Columns.Add("Rocket");
-            allLaunchesList.Columns.Add("Windows start time");
-            allLaunchesList.GridLines = true;
         }
 
         private void updateFromWebButton_Click(object sender, EventArgs e)
         {
 
+            updateFromWebButton.Enabled = false;
             this.Enabled = false;
             this.UseWaitCursor = true;
 
@@ -40,7 +39,6 @@ namespace CrazyRL
             using (var context = new LaunchContext())
             {
 
-
                 foreach (var launch in launches)
                 {
                     context.launches.Add(launch);
@@ -48,30 +46,9 @@ namespace CrazyRL
                 context.SaveChanges();
 
                 updateProgressBar.Value = 75;
-
-                foreach (var launch in context.launches)
-                {
-                    Console.WriteLine(launch);
-                }
-
-                //var launch = new Launch() { location = "Zanzibar" };
-                //context.launches.Add(launch);
-                //context.SaveChanges();
-
-                //allLaunchesList.add context.launches.ToList();
             }
 
-           /*
-               foreach (var stuff in launches)
-               {
-                   Console.WriteLine(stuff);
-               }
-           */
-
-
-
-
-
+            this.ListReload(allLaunchesList);
             updateProgressBar.Value = 100;
             
             this.UseWaitCursor = false;
@@ -80,7 +57,19 @@ namespace CrazyRL
 
         private void addButton_Click(object sender, EventArgs e)
         {
-            allLaunchesList.Items.Add(new ListViewItem(new string[] { "John dsfsfsdfs ", "1", "kupa"}));
+            Launch launch = new Launch();
+
+            launch.name = "abc";
+            launch.rocketFullName = "gef";
+            launch.windowStart = "pqr";
+
+            using (var context = new LaunchContext())
+            {
+                context.launches.Add(launch);
+                context.SaveChanges();
+            }
+
+            this.ListReload(allLaunchesList);
         }
 
         private void editButton_Click(object sender, EventArgs e)
@@ -90,6 +79,8 @@ namespace CrazyRL
 
         private void removeButton_Click(object sender, EventArgs e)
         {
+
+            
 
         }
 
@@ -105,7 +96,14 @@ namespace CrazyRL
 
         private void allLaunchesList_SelectedIndexChanged(object sender, EventArgs e)
         {
+            
+        }
 
+        private void ViewController_Load(object sender, EventArgs e)
+        {
+
+            this.ListInit(allLaunchesList);
+            this.ListReload(allLaunchesList);
         }
     }
 }

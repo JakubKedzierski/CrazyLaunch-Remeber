@@ -32,6 +32,7 @@ namespace CrazyRL
             this.tabsControl = new MetroFramework.Controls.MetroTabControl();
             this.tabPageFav = new MetroFramework.Controls.MetroTabPage();
             this.tabPageAll = new MetroFramework.Controls.MetroTabPage();
+            this.allLaunchesList = new System.Windows.Forms.ListView();
             this.updateProgressBar = new MetroFramework.Controls.MetroProgressBar();
             this.updateFromWebButton = new MetroFramework.Controls.MetroButton();
             this.addButton = new MetroFramework.Controls.MetroButton();
@@ -41,7 +42,6 @@ namespace CrazyRL
             this.removeButton = new MetroFramework.Controls.MetroButton();
             this.detailsBox = new System.Windows.Forms.GroupBox();
             this.launchTimerLabel = new MetroFramework.Controls.MetroLabel();
-            this.allLaunchesList = new System.Windows.Forms.ListView();
             this.tabsControl.SuspendLayout();
             this.tabPageAll.SuspendLayout();
             this.SuspendLayout();
@@ -80,6 +80,17 @@ namespace CrazyRL
             this.tabPageAll.TabIndex = 1;
             this.tabPageAll.Text = "All launches";
             this.tabPageAll.VerticalScrollbarBarColor = true;
+            // 
+            // allLaunchesList
+            // 
+            this.allLaunchesList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.allLaunchesList.HideSelection = false;
+            this.allLaunchesList.Location = new System.Drawing.Point(0, 3);
+            this.allLaunchesList.Name = "allLaunchesList";
+            this.allLaunchesList.Size = new System.Drawing.Size(492, 552);
+            this.allLaunchesList.TabIndex = 2;
+            this.allLaunchesList.UseCompatibleStateImageBehavior = false;
+            this.allLaunchesList.SelectedIndexChanged += new System.EventHandler(this.allLaunchesList_SelectedIndexChanged);
             // 
             // updateProgressBar
             // 
@@ -168,17 +179,6 @@ namespace CrazyRL
             this.launchTimerLabel.TabIndex = 9;
             this.launchTimerLabel.Text = "Launch timer: ";
             // 
-            // allLaunchesList
-            // 
-            this.allLaunchesList.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.allLaunchesList.HideSelection = false;
-            this.allLaunchesList.Location = new System.Drawing.Point(0, 3);
-            this.allLaunchesList.Name = "allLaunchesList";
-            this.allLaunchesList.Size = new System.Drawing.Size(492, 552);
-            this.allLaunchesList.TabIndex = 2;
-            this.allLaunchesList.UseCompatibleStateImageBehavior = false;
-            this.allLaunchesList.SelectedIndexChanged += new System.EventHandler(this.allLaunchesList_SelectedIndexChanged);
-            // 
             // ViewController
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -198,6 +198,7 @@ namespace CrazyRL
             this.Name = "ViewController";
             this.Resizable = false;
             this.Text = "Crazy Launch Remember";
+            this.Load += new System.EventHandler(this.ViewController_Load);
             this.tabsControl.ResumeLayout(false);
             this.tabPageAll.ResumeLayout(false);
             this.ResumeLayout(false);
