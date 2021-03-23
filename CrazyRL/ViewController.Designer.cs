@@ -90,7 +90,6 @@ namespace CrazyRL
             this.allLaunchesList.Size = new System.Drawing.Size(492, 552);
             this.allLaunchesList.TabIndex = 2;
             this.allLaunchesList.UseCompatibleStateImageBehavior = false;
-            this.allLaunchesList.SelectedIndexChanged += new System.EventHandler(this.allLaunchesList_SelectedIndexChanged);
             // 
             // updateProgressBar
             // 

@@ -17,13 +17,24 @@ namespace CrazyRL
     public partial class ViewController : MetroFramework.Forms.MetroForm
     {
 
+        /// <summary>
+        /// Obiekt paresra do api uruchamiany z metod klasy ViewController.
+        /// </summary>
         private APIParser api = new APIParser();
 
+        /// <summary>
+        /// Domyślny konstruktor.
+        /// </summary>
         public ViewController()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Obsługa przerwania po naciśnięciu przycisku "update from web" - Pobiera poprzez APIParser odpowiednie dane i wczytuje je do bazy danych
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void updateFromWebButton_Click(object sender, EventArgs e)
         {
 
@@ -55,6 +66,11 @@ namespace CrazyRL
             this.Enabled = true;
         }
 
+        /// <summary>
+        /// Obsługa przerwania po kliknięciu przycisku "Add launch" - dodawanie nowego lotu do bazy, potem aktualizacja listy.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void addButton_Click(object sender, EventArgs e)
         {
             Launch launch = new Launch();
@@ -72,11 +88,21 @@ namespace CrazyRL
             this.ListReload(allLaunchesList);
         }
 
+        /// <summary>
+        /// Obsługa przerwania po kliknięciu przycisku "Edit launch" - edycja wybranego lotu, zapisanie zmian w bazie i aktualizacja listy.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void editButton_Click(object sender, EventArgs e)
         {
 
         }
 
+        /// <summary>
+        /// Obsługa przerwania po kliknięciu przycisku "Remove launch" - usunięcie wybranego lotu, zapisanie zmian w bazie i aktualizacja listy.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void removeButton_Click(object sender, EventArgs e)
         {
 
@@ -84,21 +110,31 @@ namespace CrazyRL
 
         }
 
+        /// <summary>
+        /// Obsługa przerwania po kliknięciu przycisku "Export" - eksport danych do pliku.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void exportButton_Click(object sender, EventArgs e)
         {
 
         }
 
+        /// <summary>
+        /// Obsługa przerwania po kliknięciu przycisku "Import" - import danych z pliku do bazy, aktualizacja listy.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void importButton_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void allLaunchesList_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
-
+        /// <summary>
+        /// Ta metoda wykonuje się od razu po włączeniu okna, powoduje ona dodanie nagłówków do list oraz aktualizację ich zawartości z bazy danych.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ViewController_Load(object sender, EventArgs e)
         {
 
