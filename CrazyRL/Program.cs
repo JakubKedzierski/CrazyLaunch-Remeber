@@ -10,42 +10,12 @@ namespace CrazyRL
     static class Program
     {
         /// <summary>
-        /// Główny punkt wejścia dla aplikacji.
+        /// Funkcja main
         /// </summary>
         //[STAThread]
         static void Main()
         {
-            /*APIParser api = new APIParser();
-            api.getApiResponse();
-            var launches = api.parseLaunchRequest();
-
-            using (var context = new LaunchContext())
-            {
-
-                
-                foreach(var launch in launches) {
-                    context.launches.Add(launch);
-                }
-                context.SaveChanges();
-                
-                foreach (var launch in context.launches)
-                {
-                    Console.WriteLine(launch);
-                }
-                
-                //var launch = new Launch() { location = "Zanzibar" };
-                //context.launches.Add(launch);
-                //context.SaveChanges();
-            }*/
-
-            /*
-                foreach (var stuff in launches)
-                {
-                    Console.WriteLine(stuff);
-                }
-            */
             
-           
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             ViewController viewCtrl = new ViewController();
