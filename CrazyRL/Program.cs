@@ -14,19 +14,41 @@ namespace CrazyRL
         //[STAThread]
         static void Main()
         {
-            /*APIParser api = new APIParser();
-            api.downloadAPI();
-            
-            foreach(var stuff in api.launchList)
+            APIParser api = new APIParser();
+            api.getApiResponse();
+            var launches = api.parseLaunchRequest();
+
+            using (var context = new LaunchContext())
             {
-                Console.WriteLine(stuff);
+
+                
+                foreach(var launch in launches) {
+                    context.launches.Add(launch);
+                }
+                context.SaveChanges();
+                
+                foreach (var launch in context.launches)
+                {
+                    Console.WriteLine(launch);
+                }
+                
+                //var launch = new Launch() { location = "Zanzibar" };
+                //context.launches.Add(launch);
+                //context.SaveChanges();
             }
+
+            /*
+                foreach (var stuff in launches)
+                {
+                    Console.WriteLine(stuff);
+                }
             */
-           
+
+           /*
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ViewController());
-               
-        }
+            Application.Run(new Form1());
+           */    
+    }
     }
 }

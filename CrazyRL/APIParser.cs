@@ -15,34 +15,32 @@ using System.Net;
 
 
 namespace CrazyRL
-{
-    class APIParser
+{   /// <summary>
+    /// Parsing class - it allows to connect to specyfied API, download json file with launch information and parse this response
+    /// </summary>
+    public class APIParser
     {
         private const string URL = "https://lldev.thespacedevs.com/2.0.0/launch";
-        public List<Launch> launchList { get; set; }
+        private const string URLparametr = "?format=json";
 
-        public APIParser()
-        {
-            launchList = null; 
-        }
+        private string APIresponse = null;
+
 
         /// <summary>
         /// Connects to thespacedevs API and download launch info in json format
         /// 
         /// If connection failes throws WebException 
-        /// If connection is stable starts json parsing
+        /// If connection is stable download api response
         /// </summary>
-        public async void downloadAPI()
+        public async void getApiResponse()
         {
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri(URL);
 
-            HttpResponseMessage response = client.GetAsync("?format=json").Result;
+            HttpResponseMessage response = client.GetAsync(URLparametr).Result;
             if (response.IsSuccessStatusCode)
             {
-                var dataObjects = await response.Content.ReadAsStringAsync();
-                parseLaunchRequest(dataObjects);
-                File.WriteAllText("dane_lotow.txt", dataObjects);
+                APIresponse = await response.Content.ReadAsStringAsync();
             }
             else
             {
@@ -55,11 +53,29 @@ namespace CrazyRL
         }
 
         /// <summary>
+        /// Start parsing launch request using api response that have to be earlier downloaded by method getApiResponse()
+        /// 
+        /// If failed throws InvalidOperationException
+        /// </summary>
+        public List<Launch> parseLaunchRequest()
+        {
+            var launchList = new List<Launch>();
+            if (APIresponse != null)
+                launchList = parseLaunchRequest(APIresponse);
+            else
+                throw new InvalidOperationException("APIresponse is null");
+
+            return launchList;
+        }
+
+
+        /// <summary>
         /// Parse jsonResponse and create Launch objects 
         /// 
+        /// if failed throws one ouf exceptions: SerializationException,KeyNotFoundException
         /// </summary>
-        /// <param name="jsonApiResponse"></param> json response for launch request
-        public void parseLaunchRequest(String jsonApiResponse)
+        /// <param name="jsonApiResponse"></param> json response for launch request. Response must have proper composition
+        public List<Launch> parseLaunchRequest(String jsonApiResponse)
         {
             JsonArray results = new JsonArray();
             try
@@ -75,7 +91,7 @@ namespace CrazyRL
                 throw new InvalidOperationException("Parsing goes wrong, not proper json file");
             }
 
-            launchList = new List<Launch>();
+            var launchList = new List<Launch>();
 
             foreach (JsonObject launchData in results)
             {
@@ -111,8 +127,9 @@ namespace CrazyRL
                     Console.WriteLine("Exception message:" + exception.ToString());
                     throw new InvalidOperationException("Parsing goes wrong, key not found in dictionary");
                 }
-
             }
+
+            return launchList;
             
 
         }
