@@ -17,9 +17,5 @@ namespace CrazyRL
             InitializeComponent();
         }
 
-        private void ViewController_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

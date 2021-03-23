@@ -6,6 +6,7 @@ using System.Windows.Forms;
 
 namespace CrazyRL
 {
+
     static class Program
     {
         /// <summary>
@@ -14,7 +15,7 @@ namespace CrazyRL
         //[STAThread]
         static void Main()
         {
-            APIParser api = new APIParser();
+            /*APIParser api = new APIParser();
             api.getApiResponse();
             var launches = api.parseLaunchRequest();
 
@@ -35,7 +36,7 @@ namespace CrazyRL
                 //var launch = new Launch() { location = "Zanzibar" };
                 //context.launches.Add(launch);
                 //context.SaveChanges();
-            }
+            }*/
 
             /*
                 foreach (var stuff in launches)
@@ -43,12 +44,12 @@ namespace CrazyRL
                     Console.WriteLine(stuff);
                 }
             */
-
-           /*
+            
+           
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
-           */    
-    }
+            ViewController viewCtrl = new ViewController();
+            Application.Run(viewCtrl);
+        }
     }
 }
