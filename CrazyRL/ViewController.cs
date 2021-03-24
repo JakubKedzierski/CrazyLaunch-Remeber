@@ -50,9 +50,19 @@ namespace CrazyRL
             using (var context = new LaunchContext())
             {
 
-                foreach (var launch in launches)
+                bool alreadyExist;
+                foreach (var launchInApi in launches)
                 {
-                    context.launches.Add(launch);
+                    alreadyExist = false;
+                    foreach (Launch launchInDataBase in context.launches.ToArray())
+                    {
+                        if (launchInDataBase.name == launchInApi.name)
+                        {
+                            alreadyExist = true;
+                        }
+                    }
+
+                    if (!alreadyExist) context.launches.Add(launchInApi);
                 }
                 context.SaveChanges();
 
@@ -106,13 +116,15 @@ namespace CrazyRL
         private void removeButton_Click(object sender, EventArgs e)
         {
 
-            foreach (ListViewItem item in allLaunchesList.Items)
+            using (var context = new LaunchContext())
             {
-                if (item.Selected) //allLaunchesList.Items.Remove(item);
+
+                foreach (ListViewItem item in allLaunchesList.Items)
                 {
-                    
-                    using (var context = new LaunchContext())
+                    if (item.Selected)
                     {
+
+
                         foreach (Launch launch in context.launches.ToArray())
                         {
                             if (launch.LaunchId.ToString() == item.Text)
@@ -120,10 +132,9 @@ namespace CrazyRL
                                 context.launches.Remove(launch);
                             }
                         }
-                        context.SaveChanges();
                     }
-
                 }
+                context.SaveChanges();
             }
             this.ListReload(allLaunchesList);
 
