@@ -106,7 +106,26 @@ namespace CrazyRL
         private void removeButton_Click(object sender, EventArgs e)
         {
 
-            
+            foreach (ListViewItem item in allLaunchesList.Items)
+            {
+                if (item.Selected) //allLaunchesList.Items.Remove(item);
+                {
+                    
+                    using (var context = new LaunchContext())
+                    {
+                        foreach (Launch launch in context.launches.ToArray())
+                        {
+                            if (launch.LaunchId.ToString() == item.Text)
+                            {
+                                context.launches.Remove(launch);
+                            }
+                        }
+                        context.SaveChanges();
+                    }
+
+                }
+            }
+            this.ListReload(allLaunchesList);
 
         }
 
