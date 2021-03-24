@@ -30,6 +30,8 @@ namespace CrazyRL
             InitializeComponent();
         }
 
+        /************************************************************************************************************************/
+
         /// <summary>
         /// Obsługa przerwania po naciśnięciu przycisku "update from web" - Pobiera poprzez APIParser odpowiednie dane i wczytuje je do bazy danych
         /// </summary>
@@ -76,6 +78,8 @@ namespace CrazyRL
             this.Enabled = true;
         }
 
+        /************************************************************************************************************************/
+
         /// <summary>
         /// Obsługa przerwania po kliknięciu przycisku "Add launch" - dodawanie nowego lotu do bazy, potem aktualizacja listy.
         /// </summary>
@@ -98,6 +102,8 @@ namespace CrazyRL
             this.ListReload(allLaunchesList);
         }
 
+        /************************************************************************************************************************/
+
         /// <summary>
         /// Obsługa przerwania po kliknięciu przycisku "Edit launch" - edycja wybranego lotu, zapisanie zmian w bazie i aktualizacja listy.
         /// </summary>
@@ -107,6 +113,8 @@ namespace CrazyRL
         {
 
         }
+
+        /************************************************************************************************************************/
 
         /// <summary>
         /// Obsługa przerwania po kliknięciu przycisku "Remove launch" - usunięcie wybranego lotu, zapisanie zmian w bazie i aktualizacja listy.
@@ -140,6 +148,8 @@ namespace CrazyRL
 
         }
 
+        /************************************************************************************************************************/
+
         /// <summary>
         /// Obsługa przerwania po kliknięciu przycisku "Export" - eksport danych do pliku.
         /// </summary>
@@ -150,6 +160,8 @@ namespace CrazyRL
 
         }
 
+        /************************************************************************************************************************/
+
         /// <summary>
         /// Obsługa przerwania po kliknięciu przycisku "Import" - import danych z pliku do bazy, aktualizacja listy.
         /// </summary>
@@ -159,6 +171,8 @@ namespace CrazyRL
         {
 
         }
+
+        /************************************************************************************************************************/
 
         /// <summary>
         /// Ta metoda wykonuje się od razu po włączeniu okna, powoduje ona dodanie nagłówków do list oraz aktualizację ich zawartości z bazy danych.

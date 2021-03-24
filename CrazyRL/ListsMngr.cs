@@ -26,6 +26,8 @@ namespace CrazyRL
             listV.GridLines = true;
         }
 
+        /************************************************************************************************************************/
+
         /// <summary>
         /// Przeładowanie (odświerzenie) na nowo wierszy w liście
         /// </summary>
