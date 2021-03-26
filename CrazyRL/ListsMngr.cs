@@ -29,7 +29,7 @@ namespace CrazyRL
         /************************************************************************************************************************/
 
         /// <summary>
-        /// Przeładowanie (odświerzenie) na nowo wierszy w liście
+        /// Przeładowanie (odświerzenie) na nowo wierszy w liście.
         /// </summary>
         /// <param name="listV">Lista do przeładowania</param>
         private void ListReload(ListView listV)
@@ -47,6 +47,31 @@ namespace CrazyRL
                 else listV.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
             }
         }
+
+        /************************************************************************************************************************/
+
+        /// <summary>
+        /// Aktywacja i dezaktywacja przycisków add oraz edit.
+        /// </summary>
+        /// <param name="listV">Lista, na podstawie której odświeżać przyciski</param>
+        private void ListCheckButtons(ListView listV)
+        {
+            int nofItems = allLaunchesList.SelectedItems.Count;
+
+            if (nofItems < 1)
+            {
+                removeButton.Enabled = false;
+                editButton.Enabled = false;
+            }
+            else
+            {
+                removeButton.Enabled = true;
+                if (nofItems > 1) editButton.Enabled = false;
+                else editButton.Enabled = true;
+            }
+        }
+
+
 
     }
 }

@@ -110,7 +110,8 @@ namespace CrazyRL
         {
             if (allLaunchesList.SelectedItems.Count != 1)
             {
-                MessageBox.Show("No launches or too many launches selected.", "Cannot edit launches");
+                MessageBox.Show("Too many launches selected.", "Cannot edit launches", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
         }
@@ -126,7 +127,7 @@ namespace CrazyRL
         {
 
             if (allLaunchesList.SelectedItems.Count < 1) return;
-            DialogResult result = MessageBox.Show("Are you sure?", "Remove launches", MessageBoxButtons.OKCancel);
+            DialogResult result = MessageBox.Show("Are you sure?", "Remove launches", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
             if (result == DialogResult.OK)
             {
 
@@ -146,6 +147,7 @@ namespace CrazyRL
                     context.SaveChanges();
                 }
                 this.ListReload(allLaunchesList);
+                this.ListCheckButtons(allLaunchesList);
             }
 
         }
@@ -187,5 +189,12 @@ namespace CrazyRL
             this.ListInit(allLaunchesList);
             this.ListReload(allLaunchesList);
         }
+
+        private void allLaunchesList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.ListCheckButtons(allLaunchesList);
+        }
+
+
     }
 }

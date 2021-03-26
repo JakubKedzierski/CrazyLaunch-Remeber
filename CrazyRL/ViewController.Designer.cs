@@ -90,6 +90,7 @@ namespace CrazyRL
             this.allLaunchesList.Size = new System.Drawing.Size(492, 552);
             this.allLaunchesList.TabIndex = 2;
             this.allLaunchesList.UseCompatibleStateImageBehavior = false;
+            this.allLaunchesList.SelectedIndexChanged += new System.EventHandler(this.allLaunchesList_SelectedIndexChanged);
             // 
             // updateProgressBar
             // 
@@ -141,6 +142,7 @@ namespace CrazyRL
             // editButton
             // 
             this.editButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.editButton.Enabled = false;
             this.editButton.Location = new System.Drawing.Point(279, 698);
             this.editButton.Name = "editButton";
             this.editButton.Size = new System.Drawing.Size(120, 28);
@@ -151,6 +153,7 @@ namespace CrazyRL
             // removeButton
             // 
             this.removeButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.removeButton.Enabled = false;
             this.removeButton.Location = new System.Drawing.Point(405, 698);
             this.removeButton.Name = "removeButton";
             this.removeButton.Size = new System.Drawing.Size(120, 28);
