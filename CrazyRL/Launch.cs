@@ -60,6 +60,22 @@ namespace CrazyRL
         public override int GetHashCode() { return LaunchId; }
 
         /// <summary>
+        /// Przeciążenie operatora porównania obiektów klasy Launch.
+        /// </summary>
+        /// <param name="obj1">Obiekt porównywalny</param>
+        /// <param name="obj2">Obiekt porównywany</param>
+        /// <returns></returns>
+        public static bool operator ==(Launch obj1, Launch obj2) => obj1.Equals(obj2);
+
+        /// <summary>
+        /// Przeciążenie operatora różności obiektów klasy Launch.
+        /// </summary>
+        /// <param name="obj1">Obiekt porównywalny</param>
+        /// <param name="obj2">Obiekt porównywany</param>
+        /// <returns></returns>
+        public static bool operator !=(Launch obj1, Launch obj2) => !obj1.Equals(obj2);
+
+        /// <summary>
         /// Metoda zwracająca krótki zestaw informacji - sp. do wyświetlenia na liście.
         /// </summary>
         public string[] ShortData

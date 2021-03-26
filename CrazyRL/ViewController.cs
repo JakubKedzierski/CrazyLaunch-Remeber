@@ -58,7 +58,7 @@ namespace CrazyRL
                     alreadyExist = false;
                     foreach (Launch launchInDataBase in context.launches.ToArray())
                     {
-                        if (launchInDataBase.Equals(launchInApi))
+                        if (launchInDataBase == launchInApi)
                         {
                             alreadyExist = true;
                         }
