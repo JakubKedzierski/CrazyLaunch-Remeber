@@ -84,19 +84,22 @@ namespace CrazyRL
         /// <param name="e"></param>
         private void addButton_Click(object sender, EventArgs e)
         {
+            addButton.Enabled = false;
             Launch launch = new Launch();
 
             DialogForm dialogForm = new DialogForm();
-            if (dialogForm.ShowDialog() == DialogResult.OK) launch = dialogForm.editedLaunch;
-            else return;
-
-            using (var context = new LaunchContext())
+            if (dialogForm.ShowDialog() == DialogResult.OK)
             {
-                context.launches.Add(launch);
-                context.SaveChanges();
-            }
+                launch = dialogForm.editedLaunch;
 
+                using (var context = new LaunchContext())
+                {
+                    context.launches.Add(launch);
+                    context.SaveChanges();
+                }
+            }
             this.ListReload(allLaunchesList);
+            addButton.Enabled = true;
         }
 
         /************************************************************************************************************************/
@@ -108,14 +111,36 @@ namespace CrazyRL
         /// <param name="e"></param>
         private void editButton_Click(object sender, EventArgs e)
         {
-            if (allLaunchesList.SelectedItems.Count != 1) // Trzeba się zastanowić, czy to jest potrzebne, skoro i tak przycisk jest nieaktywny po zaznaczeniu więcej niż 1 launcha
+            Launch launchToEdit = new Launch();
+
+            using (var context = new LaunchContext())
             {
-                MessageBox.Show("Too many launches selected.", "Cannot edit launches", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+
+                foreach (ListViewItem item in allLaunchesList.SelectedItems)
+                {
+                    foreach (Launch launch in context.launches.ToArray())
+                    {
+                        if (launch.LaunchId.ToString() == item.Text)
+                        {
+                            launchToEdit = launch;
+                        }
+                    }
+                }
+                context.SaveChanges();
             }
 
+            DialogForm dialogForm = new DialogForm();
+            dialogForm.editedLaunch = launchToEdit;
+            if (dialogForm.ShowDialog() == DialogResult.OK) launchToEdit = dialogForm.editedLaunch;
+            else return;
 
+            using (var context = new LaunchContext())
+            {
+                context.launches.Add(launchToEdit);
+                context.SaveChanges();
+            }
 
+            this.ListReload(allLaunchesList);
         }
 
         /************************************************************************************************************************/
@@ -128,7 +153,6 @@ namespace CrazyRL
         private void removeButton_Click(object sender, EventArgs e)
         {
 
-            if (allLaunchesList.SelectedItems.Count < 1) return;
             DialogResult result = MessageBox.Show("Are you sure?", "Remove launches", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
             if (result == DialogResult.OK)
             {
@@ -192,11 +216,29 @@ namespace CrazyRL
             this.ListReload(allLaunchesList);
         }
 
+        /************************************************************************************************************************/
+
+        /// <summary>
+        /// Przerwanie związane z aktualizacją listy dostępnych przycisków.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void allLaunchesList_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.ListCheckButtons(allLaunchesList);
         }
 
+        /************************************************************************************************************************/
 
+        /// <summary>
+        /// Metoda obsługująca przerwanie występujące po wciśnięciu przycisku.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ViewController_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete && removeButton.Enabled) removeButton_Click(sender, e);
+            if (e.KeyCode == Keys.Return && editButton.Enabled) editButton_Click(sender, e);
+        }
     }
 }

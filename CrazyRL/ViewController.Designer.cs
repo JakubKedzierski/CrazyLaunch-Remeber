@@ -196,11 +196,13 @@ namespace CrazyRL
             this.Controls.Add(this.updateFromWebButton);
             this.Controls.Add(this.updateProgressBar);
             this.Controls.Add(this.tabsControl);
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "ViewController";
             this.Resizable = false;
             this.Text = "Crazy Launch Remember";
             this.Load += new System.EventHandler(this.ViewController_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ViewController_KeyDown);
             this.tabsControl.ResumeLayout(false);
             this.tabPageAll.ResumeLayout(false);
             this.ResumeLayout(false);

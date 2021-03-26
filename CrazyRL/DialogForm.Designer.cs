@@ -43,6 +43,10 @@ namespace CrazyRL
             this.gmapsUrlTextBox = new MetroFramework.Controls.MetroTextBox();
             this.okButton = new MetroFramework.Controls.MetroButton();
             this.cancelButton = new MetroFramework.Controls.MetroButton();
+            this.wStartTimeLabel = new MetroFramework.Controls.MetroLabel();
+            this.wStartTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.wEndTimeLabel = new MetroFramework.Controls.MetroLabel();
+            this.wEndTimePicker = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // nameLabel
@@ -143,6 +147,7 @@ namespace CrazyRL
             // 
             // okButton
             // 
+            this.okButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.okButton.Location = new System.Drawing.Point(23, 549);
             this.okButton.Name = "okButton";
             this.okButton.Size = new System.Drawing.Size(107, 28);
@@ -152,6 +157,7 @@ namespace CrazyRL
             // 
             // cancelButton
             // 
+            this.cancelButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cancelButton.Location = new System.Drawing.Point(320, 549);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(107, 28);
@@ -159,11 +165,51 @@ namespace CrazyRL
             this.cancelButton.Text = "Cancel";
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
+            // wStartTimeLabel
+            // 
+            this.wStartTimeLabel.AutoSize = true;
+            this.wStartTimeLabel.Location = new System.Drawing.Point(23, 348);
+            this.wStartTimeLabel.Name = "wStartTimeLabel";
+            this.wStartTimeLabel.Size = new System.Drawing.Size(120, 19);
+            this.wStartTimeLabel.TabIndex = 14;
+            this.wStartTimeLabel.Text = "Window start time:";
+            // 
+            // wStartTimePicker
+            // 
+            this.wStartTimePicker.Location = new System.Drawing.Point(23, 370);
+            this.wStartTimePicker.MaxDate = new System.DateTime(2099, 12, 31, 0, 0, 0, 0);
+            this.wStartTimePicker.MinDate = new System.DateTime(1940, 1, 1, 0, 0, 0, 0);
+            this.wStartTimePicker.Name = "wStartTimePicker";
+            this.wStartTimePicker.Size = new System.Drawing.Size(404, 20);
+            this.wStartTimePicker.TabIndex = 15;
+            // 
+            // wEndTimeLabel
+            // 
+            this.wEndTimeLabel.AutoSize = true;
+            this.wEndTimeLabel.Location = new System.Drawing.Point(23, 393);
+            this.wEndTimeLabel.Name = "wEndTimeLabel";
+            this.wEndTimeLabel.Size = new System.Drawing.Size(116, 19);
+            this.wEndTimeLabel.TabIndex = 16;
+            this.wEndTimeLabel.Text = "Window end time:";
+            // 
+            // wEndTimePicker
+            // 
+            this.wEndTimePicker.Location = new System.Drawing.Point(23, 415);
+            this.wEndTimePicker.MaxDate = new System.DateTime(2099, 12, 31, 0, 0, 0, 0);
+            this.wEndTimePicker.MinDate = new System.DateTime(1940, 1, 1, 0, 0, 0, 0);
+            this.wEndTimePicker.Name = "wEndTimePicker";
+            this.wEndTimePicker.Size = new System.Drawing.Size(404, 20);
+            this.wEndTimePicker.TabIndex = 17;
+            // 
             // DialogForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(450, 600);
+            this.Controls.Add(this.wEndTimePicker);
+            this.Controls.Add(this.wEndTimeLabel);
+            this.Controls.Add(this.wStartTimePicker);
+            this.Controls.Add(this.wStartTimeLabel);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.okButton);
             this.Controls.Add(this.gmapsUrlTextBox);
@@ -183,6 +229,7 @@ namespace CrazyRL
             this.Name = "DialogForm";
             this.Resizable = false;
             this.Text = "Fill launch details";
+            this.Load += new System.EventHandler(this.DialogForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -204,5 +251,9 @@ namespace CrazyRL
         private MetroFramework.Controls.MetroTextBox gmapsUrlTextBox;
         private MetroFramework.Controls.MetroButton okButton;
         private MetroFramework.Controls.MetroButton cancelButton;
+        private MetroFramework.Controls.MetroLabel wStartTimeLabel;
+        private System.Windows.Forms.DateTimePicker wStartTimePicker;
+        private MetroFramework.Controls.MetroLabel wEndTimeLabel;
+        private System.Windows.Forms.DateTimePicker wEndTimePicker;
     }
 }

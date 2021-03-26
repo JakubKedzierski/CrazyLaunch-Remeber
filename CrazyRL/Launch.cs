@@ -22,6 +22,7 @@ namespace CrazyRL
         public String location { get; set; }
         public String locationGoogleMapsUrl { get; set; }
 
+        /************************************************************************************************************************/
 
         public override string ToString()
         {
@@ -29,6 +30,8 @@ namespace CrazyRL
                 "\nwindow ends: " + windowEnd + "\nlaunch provider: " + launchProvider + "\nrocket full name: " +
                 rocketFullName + "\nlocation: " + location + "\nGoogle Maps Url: " + locationGoogleMapsUrl +"\n";
         }
+
+        /************************************************************************************************************************/
 
         /// <summary>
         /// Metoda porównująca, czy dwa loty są tożsame.
@@ -53,6 +56,8 @@ namespace CrazyRL
             return true;
         }
 
+        /************************************************************************************************************************/
+
         /// <summary>
         /// Metoda potrzebna do zniwelowania warninga powstałego po przeciążeniu Equals.
         /// </summary>
@@ -74,6 +79,8 @@ namespace CrazyRL
         /// <param name="obj2">Obiekt porównywany</param>
         /// <returns></returns>
         public static bool operator !=(Launch obj1, Launch obj2) => !obj1.Equals(obj2);
+
+        /************************************************************************************************************************/
 
         /// <summary>
         /// Metoda zwracająca krótki zestaw informacji - sp. do wyświetlenia na liście.
