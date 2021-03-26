@@ -41,7 +41,6 @@ namespace CrazyRL
                 return false;
 
             Launch launch = (Launch)obj;
-            if (LaunchId != launch.LaunchId) return false;
             if (string.Compare(launch.name,name) != 0) return false ;
             if (string.Compare(launch.status, status) != 0) return false;
             if (string.Compare(launch.windowStart, windowStart) != 0) return false;

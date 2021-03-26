@@ -58,7 +58,7 @@ namespace CrazyRL
                     alreadyExist = false;
                     foreach (Launch launchInDataBase in context.launches.ToArray())
                     {
-                        if (launchInDataBase.name == launchInApi.name)
+                        if (launchInDataBase.Equals(launchInApi))
                         {
                             alreadyExist = true;
                         }
@@ -126,7 +126,7 @@ namespace CrazyRL
 
             using (var context = new LaunchContext())
             {
-
+                int i = allLaunchesList.SelectedItems.Count;
                 foreach (ListViewItem item in allLaunchesList.Items)
                 {
                     if (item.Selected)
