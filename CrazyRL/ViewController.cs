@@ -58,10 +58,7 @@ namespace CrazyRL
                     alreadyExist = false;
                     foreach (Launch launchInDataBase in context.launches.ToArray())
                     {
-                        if (launchInDataBase == launchInApi)
-                        {
-                            alreadyExist = true;
-                        }
+                        if (launchInDataBase == launchInApi) alreadyExist = true;
                     }
 
                     if (!alreadyExist) context.launches.Add(launchInApi);
@@ -111,6 +108,10 @@ namespace CrazyRL
         /// <param name="e"></param>
         private void editButton_Click(object sender, EventArgs e)
         {
+            if (allLaunchesList.SelectedItems.Count != 1)
+            {
+                MessageBox.Show("No launches or too many launches selected.", "Cannot edit launches");
+            }
 
         }
 
@@ -124,15 +125,16 @@ namespace CrazyRL
         private void removeButton_Click(object sender, EventArgs e)
         {
 
-            using (var context = new LaunchContext())
+            if (allLaunchesList.SelectedItems.Count < 1) return;
+            DialogResult result = MessageBox.Show("Are you sure?", "Remove launches", MessageBoxButtons.OKCancel);
+            if (result == DialogResult.OK)
             {
-                int i = allLaunchesList.SelectedItems.Count;
-                foreach (ListViewItem item in allLaunchesList.Items)
+
+                using (var context = new LaunchContext())
                 {
-                    if (item.Selected)
+
+                    foreach (ListViewItem item in allLaunchesList.SelectedItems)
                     {
-
-
                         foreach (Launch launch in context.launches.ToArray())
                         {
                             if (launch.LaunchId.ToString() == item.Text)
@@ -141,10 +143,10 @@ namespace CrazyRL
                             }
                         }
                     }
+                    context.SaveChanges();
                 }
-                context.SaveChanges();
+                this.ListReload(allLaunchesList);
             }
-            this.ListReload(allLaunchesList);
 
         }
 
