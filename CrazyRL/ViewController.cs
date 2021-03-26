@@ -86,9 +86,9 @@ namespace CrazyRL
         {
             Launch launch = new Launch();
 
-            launch.name = "abc";
-            launch.rocketFullName = "gef";
-            launch.windowStart = "pqr";
+            DialogForm dialogForm = new DialogForm();
+            if (dialogForm.ShowDialog() == DialogResult.OK) launch = dialogForm.editedLaunch;
+            else return;
 
             using (var context = new LaunchContext())
             {
@@ -108,11 +108,13 @@ namespace CrazyRL
         /// <param name="e"></param>
         private void editButton_Click(object sender, EventArgs e)
         {
-            if (allLaunchesList.SelectedItems.Count != 1)
+            if (allLaunchesList.SelectedItems.Count != 1) // Trzeba się zastanowić, czy to jest potrzebne, skoro i tak przycisk jest nieaktywny po zaznaczeniu więcej niż 1 launcha
             {
                 MessageBox.Show("Too many launches selected.", "Cannot edit launches", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
+
 
         }
 
