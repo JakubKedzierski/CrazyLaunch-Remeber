@@ -41,9 +41,17 @@ namespace CrazyRL
             this.editButton = new MetroFramework.Controls.MetroButton();
             this.removeButton = new MetroFramework.Controls.MetroButton();
             this.detailsBox = new System.Windows.Forms.GroupBox();
+            this.tableOfDetails = new System.Windows.Forms.TableLayoutPanel();
             this.launchTimerLabel = new MetroFramework.Controls.MetroLabel();
+            this.launchNameLab = new System.Windows.Forms.Label();
+            this.statusLabel = new System.Windows.Forms.Label();
+            this.launchProvLab = new System.Windows.Forms.Label();
+            this.rocketLabel = new System.Windows.Forms.Label();
+            this.launchNameDetail = new System.Windows.Forms.Label();
             this.tabsControl.SuspendLayout();
             this.tabPageAll.SuspendLayout();
+            this.detailsBox.SuspendLayout();
+            this.tableOfDetails.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabsControl
@@ -91,6 +99,7 @@ namespace CrazyRL
             this.allLaunchesList.TabIndex = 2;
             this.allLaunchesList.UseCompatibleStateImageBehavior = false;
             this.allLaunchesList.SelectedIndexChanged += new System.EventHandler(this.allLaunchesList_SelectedIndexChanged);
+
             // 
             // updateProgressBar
             // 
@@ -163,6 +172,7 @@ namespace CrazyRL
             // 
             // detailsBox
             // 
+            this.detailsBox.Controls.Add(this.tableOfDetails);
             this.detailsBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.detailsBox.Location = new System.Drawing.Point(529, 63);
             this.detailsBox.Name = "detailsBox";
@@ -170,6 +180,28 @@ namespace CrazyRL
             this.detailsBox.TabIndex = 8;
             this.detailsBox.TabStop = false;
             this.detailsBox.Text = "Launch Details";
+            // 
+            // tableOfDetails
+            // 
+            this.tableOfDetails.ColumnCount = 2;
+            this.tableOfDetails.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 47.5F));
+            this.tableOfDetails.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 52.5F));
+            this.tableOfDetails.Controls.Add(this.launchNameLab, 0, 0);
+            this.tableOfDetails.Controls.Add(this.statusLabel, 0, 1);
+            this.tableOfDetails.Controls.Add(this.launchProvLab, 0, 2);
+            this.tableOfDetails.Controls.Add(this.rocketLabel, 0, 3);
+            this.tableOfDetails.Controls.Add(this.launchNameDetail, 1, 0);
+            this.tableOfDetails.Location = new System.Drawing.Point(37, 93);
+            this.tableOfDetails.Name = "tableOfDetails";
+            this.tableOfDetails.RowCount = 5;
+            this.tableOfDetails.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 47.94521F));
+            this.tableOfDetails.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 52.05479F));
+            this.tableOfDetails.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 65F));
+            this.tableOfDetails.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 65F));
+            this.tableOfDetails.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableOfDetails.Size = new System.Drawing.Size(429, 263);
+            this.tableOfDetails.TabIndex = 0;
+            this.tableOfDetails.Visible = false;
             // 
             // launchTimerLabel
             // 
@@ -180,6 +212,55 @@ namespace CrazyRL
             this.launchTimerLabel.Size = new System.Drawing.Size(121, 25);
             this.launchTimerLabel.TabIndex = 9;
             this.launchTimerLabel.Text = "Launch timer: ";
+            // 
+            // launchNameLab
+            // 
+            this.launchNameLab.AutoSize = true;
+            this.launchNameLab.Location = new System.Drawing.Point(3, 0);
+            this.launchNameLab.Name = "launchNameLab";
+            this.launchNameLab.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            this.launchNameLab.Size = new System.Drawing.Size(86, 25);
+            this.launchNameLab.TabIndex = 0;
+            this.launchNameLab.Text = "Launch name:";
+            // 
+            // statusLabel
+            // 
+            this.statusLabel.AutoSize = true;
+            this.statusLabel.Location = new System.Drawing.Point(3, 54);
+            this.statusLabel.Name = "statusLabel";
+            this.statusLabel.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            this.statusLabel.Size = new System.Drawing.Size(44, 25);
+            this.statusLabel.TabIndex = 1;
+            this.statusLabel.Text = "Status:";
+            // 
+            // launchProvLab
+            // 
+            this.launchProvLab.AutoSize = true;
+            this.launchProvLab.Location = new System.Drawing.Point(3, 112);
+            this.launchProvLab.Name = "launchProvLab";
+            this.launchProvLab.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            this.launchProvLab.Size = new System.Drawing.Size(98, 25);
+            this.launchProvLab.TabIndex = 2;
+            this.launchProvLab.Text = "Launch provider:";
+            // 
+            // rocketLabel
+            // 
+            this.rocketLabel.AutoSize = true;
+            this.rocketLabel.Location = new System.Drawing.Point(3, 177);
+            this.rocketLabel.Name = "rocketLabel";
+            this.rocketLabel.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            this.rocketLabel.Size = new System.Drawing.Size(99, 25);
+            this.rocketLabel.TabIndex = 3;
+            this.rocketLabel.Text = "Rocket full name";
+            // 
+            // launchNameDetail
+            // 
+            this.launchNameDetail.AutoSize = true;
+            this.launchNameDetail.Location = new System.Drawing.Point(206, 0);
+            this.launchNameDetail.Name = "launchNameDetail";
+            this.launchNameDetail.Size = new System.Drawing.Size(7, 30);
+            this.launchNameDetail.TabIndex = 4;
+            this.launchNameDetail.Text = "\r\n\r\n";
             // 
             // ViewController
             // 
@@ -205,6 +286,9 @@ namespace CrazyRL
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ViewController_KeyDown);
             this.tabsControl.ResumeLayout(false);
             this.tabPageAll.ResumeLayout(false);
+            this.detailsBox.ResumeLayout(false);
+            this.tableOfDetails.ResumeLayout(false);
+            this.tableOfDetails.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -225,5 +309,11 @@ namespace CrazyRL
         private System.Windows.Forms.GroupBox detailsBox;
         private MetroFramework.Controls.MetroLabel launchTimerLabel;
         private System.Windows.Forms.ListView allLaunchesList;
+        private System.Windows.Forms.TableLayoutPanel tableOfDetails;
+        private System.Windows.Forms.Label launchNameLab;
+        private System.Windows.Forms.Label statusLabel;
+        private System.Windows.Forms.Label launchProvLab;
+        private System.Windows.Forms.Label rocketLabel;
+        private System.Windows.Forms.Label launchNameDetail;
     }
 }

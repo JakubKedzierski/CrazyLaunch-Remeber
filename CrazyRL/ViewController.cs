@@ -224,7 +224,12 @@ namespace CrazyRL
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void allLaunchesList_SelectedIndexChanged(object sender, EventArgs e)
-        {
+        {   
+            if(allLaunchesList.SelectedItems.Count != 0)
+                this.tableOfDetails.Visible = true;
+            else
+                this.tableOfDetails.Visible = false;
+
             this.ListCheckButtons(allLaunchesList);
         }
 
@@ -240,5 +245,8 @@ namespace CrazyRL
             if (e.KeyCode == Keys.Delete && removeButton.Enabled) removeButton_Click(sender, e);
             if (e.KeyCode == Keys.Return && editButton.Enabled) editButton_Click(sender, e);
         }
+
+
+
     }
 }
