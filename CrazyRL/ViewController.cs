@@ -244,7 +244,9 @@ namespace CrazyRL
                                 windowStartDetail.Text = launch.windowStart.ToString();
                                 windowEndDetail.Text = launch.windowEnd.ToString();
                                 this.padLocationMap.Navigate("https://www.google.com/maps/place/" + launch.location);
-                            }
+                                var browser = padLocationMap.ActiveXInstance as SHDocVw.WebBrowser;
+                                browser.ExecWB(SHDocVw.OLECMDID.OLECMDID_OPTICAL_ZOOM, SHDocVw.OLECMDEXECOPT.OLECMDEXECOPT_DODEFAULT,40, IntPtr.Zero);
+                        }
                     }
                 }
                 
