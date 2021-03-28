@@ -12,7 +12,7 @@ namespace CrazyRL
         /// <summary>
         /// Funkcja main
         /// </summary>
-        //[STAThread]
+        [STAThread]
         static void Main()
         {
             

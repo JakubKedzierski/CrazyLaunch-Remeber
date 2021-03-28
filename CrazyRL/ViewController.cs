@@ -225,12 +225,15 @@ namespace CrazyRL
             if (selected.Count == 1)
             {
                 this.tableOfDetails.Visible = true;
+            
+                this.padLocationMap.Visible = true;
                 using (var context = new LaunchContext())
                 {
                     ListViewItem item = selected[0];
+
                     
                     foreach (Launch launch in context.launches.ToArray())
-                        {
+                    {
                             if (launch.LaunchId.ToString() == item.Text)
                             {
                                 launchNameDetail.Text = launch.name;
@@ -240,8 +243,9 @@ namespace CrazyRL
                                 launchPadLocDetail.Text = launch.location;
                                 windowStartDetail.Text = launch.windowStart.ToString();
                                 windowEndDetail.Text = launch.windowEnd.ToString();
+                                this.padLocationMap.Navigate("https://www.google.com/maps/place/" + launch.location);
                             }
-                        }
+                    }
                 }
                 
             }

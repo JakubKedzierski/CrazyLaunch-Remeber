@@ -57,6 +57,7 @@ namespace CrazyRL
             this.windowEndDetail = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.launchTimerLabel = new MetroFramework.Controls.MetroLabel();
+            this.padLocationMap = new System.Windows.Forms.WebBrowser();
             this.tabsControl.SuspendLayout();
             this.tabPageAll.SuspendLayout();
             this.detailsBox.SuspendLayout();
@@ -180,6 +181,7 @@ namespace CrazyRL
             // 
             // detailsBox
             // 
+            this.detailsBox.Controls.Add(this.padLocationMap);
             this.detailsBox.Controls.Add(this.tableOfDetails);
             this.detailsBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.detailsBox.Location = new System.Drawing.Point(529, 63);
@@ -374,6 +376,17 @@ namespace CrazyRL
             this.launchTimerLabel.TabIndex = 9;
             this.launchTimerLabel.Text = "Launch timer: ";
             // 
+            // padLocationMap
+            // 
+            this.padLocationMap.Location = new System.Drawing.Point(44, 414);
+            this.padLocationMap.MinimumSize = new System.Drawing.Size(20, 20);
+            this.padLocationMap.Name = "padLocationMap";
+            this.padLocationMap.ScriptErrorsSuppressed = true;
+            this.padLocationMap.Size = new System.Drawing.Size(402, 161);
+            this.padLocationMap.TabIndex = 1;
+            this.padLocationMap.Url = new System.Uri("http://www.google.com", System.UriKind.Absolute);
+            this.padLocationMap.Visible = false;
+            // 
             // ViewController
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -436,5 +449,6 @@ namespace CrazyRL
         private System.Windows.Forms.Label t0label;
         private System.Windows.Forms.Label windowStartDetail;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.WebBrowser padLocationMap;
     }
 }
