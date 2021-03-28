@@ -13,22 +13,6 @@ namespace CrazyRL
     {
 
         /// <summary>
-        /// Inicjalizacja listy - dodanie nagłówków (kolumn).
-        /// </summary>
-        /// <param name="listV">Lista do zainicjalizowania</param>
-        private void ListInit(ListView listV)
-        {
-            listV.View = View.Details;
-            listV.Columns.Add("Id");
-            listV.Columns.Add("Name");
-            listV.Columns.Add("Rocket");
-            listV.Columns.Add("Window start time");
-            listV.GridLines = true;
-        }
-
-        /************************************************************************************************************************/
-
-        /// <summary>
         /// Przeładowanie (odświerzenie) na nowo wierszy w liście.
         /// </summary>
         /// <param name="listV">Lista do przeładowania</param>
@@ -45,6 +29,7 @@ namespace CrazyRL
 
                 if (listV.Items.Count > 0) listV.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
                 else listV.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+                listV.Columns[0].Width = 0;
             }
         }
 

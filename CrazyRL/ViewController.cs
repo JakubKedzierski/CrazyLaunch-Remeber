@@ -207,8 +207,6 @@ namespace CrazyRL
         /// <param name="e"></param>
         private void ViewController_Load(object sender, EventArgs e)
         {
-
-            this.ListInit(allLaunchesList);
             this.ListReload(allLaunchesList);
         }
 
@@ -224,8 +222,7 @@ namespace CrazyRL
             var selected = allLaunchesList.SelectedItems;
             if (selected.Count == 1)
             {
-                this.tableOfDetails.Visible = true;
-                this.padLocationMap.Visible = true;
+                detailsBox.Visible = true;
 
                 using (var context = new LaunchContext())
                 {
@@ -233,23 +230,20 @@ namespace CrazyRL
                     ListViewItem item = selected[0];
                     Launch launch = context.launches.Find(int.Parse(item.Text));
 
-                    launchNameDetail.Text = launch.name;
-                    rocketFullLabelDetail.Text = launch.rocketFullName;
-                    statusLabelDetail.Text = launch.status;
-                    launchProviderLabelDetail.Text = launch.launchProvider;
-                    launchPadLocDetail.Text = launch.location;
-                    windowStartDetail.Text = launch.windowStart.ToString();
-                    windowEndDetail.Text = launch.windowEnd.ToString();
-                    this.padLocationMap.Navigate("https://www.google.com/maps/place/" + launch.location);
-                    var browser = padLocationMap.ActiveXInstance as SHDocVw.WebBrowser;
-                    browser.ExecWB(SHDocVw.OLECMDID.OLECMDID_OPTICAL_ZOOM, SHDocVw.OLECMDEXECOPT.OLECMDEXECOPT_DODEFAULT,40, IntPtr.Zero);
+                    launchNameDetail.Text           = launch.name;
+                    rocketFullLabelDetail.Text      = launch.rocketFullName;
+                    statusLabelDetail.Text          = launch.status;
+                    launchProviderLabelDetail.Text  = launch.launchProvider;
+                    launchPadLocDetail.Text         = launch.location;
+                    windowStartDetail.Text          = launch.windowStart.ToString();
+                    windowEndDetail.Text            = launch.windowEnd.ToString();
                 }
                 
             }
             else
             {
-                this.tableOfDetails.Visible = false;
-                this.padLocationMap.Visible = false;
+                detailsBox.Visible = false;
+                padLocationMap.Visible = false;
             }
             this.ListCheckButtons(allLaunchesList);
         }
@@ -267,5 +261,23 @@ namespace CrazyRL
             if (e.KeyCode == Keys.Return && editButton.Enabled) editButton_Click(sender, e);
         }
 
+        private void showMapButton_Click(object sender, EventArgs e)
+        {
+            showMapButton.Enabled = false;
+
+            using (var context = new LaunchContext())
+            {
+
+                ListViewItem item = allLaunchesList.SelectedItems[0];
+                Launch launch = context.launches.Find(int.Parse(item.Text));
+
+                padLocationMap.Navigate("https://www.google.com/maps/place/" + launch.location);
+                var browser = padLocationMap.ActiveXInstance as SHDocVw.WebBrowser;
+                browser.ExecWB(SHDocVw.OLECMDID.OLECMDID_OPTICAL_ZOOM, SHDocVw.OLECMDEXECOPT.OLECMDEXECOPT_DODEFAULT,40, IntPtr.Zero);
+            }
+
+            padLocationMap.Visible = true;
+            showMapButton.Enabled = true;
+        }
     }
 }
