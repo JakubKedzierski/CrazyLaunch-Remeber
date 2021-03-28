@@ -271,7 +271,7 @@ namespace CrazyRL
                 ListViewItem item = allLaunchesList.SelectedItems[0];
                 Launch launch = context.launches.Find(int.Parse(item.Text));
 
-                padLocationMap.Navigate("https://www.google.com/maps/place/" + launch.location);
+                padLocationMap.Navigate(launch.locationGoogleMapsUrl);
                 var browser = padLocationMap.ActiveXInstance as SHDocVw.WebBrowser;
                 browser.ExecWB(SHDocVw.OLECMDID.OLECMDID_OPTICAL_ZOOM, SHDocVw.OLECMDEXECOPT.OLECMDEXECOPT_DODEFAULT,40, IntPtr.Zero);
             }
