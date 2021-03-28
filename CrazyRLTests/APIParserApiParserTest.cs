@@ -36,8 +36,10 @@ namespace CrazyRL.Tests
             Launch launch = new Launch();
             launch.name = "Vostok-K | Sputnik 10";
             launch.status = "Success";
-            launch.windowStart = "1961-03-25T05:54:00Z";
-            launch.windowEnd = "1961-03-25T05:54:00Z";
+            launch.windowStart = DateTime.ParseExact("1961-03-25T05:54:00Z", "yyyy-MM-ddTHH:mm:ssZ",
+                                System.Globalization.CultureInfo.InvariantCulture); 
+            launch.windowEnd = DateTime.ParseExact("1961-03-25T05:54:00Z", "yyyy-MM-ddTHH:mm:ssZ",
+                                System.Globalization.CultureInfo.InvariantCulture); 
             launch.launchProvider = "Strategic Missile Troops";
             launch.rocketFullName = "Vostok-K";
             launch.location = "Baikonur Cosmodrome, Republic of Kazakhstan";

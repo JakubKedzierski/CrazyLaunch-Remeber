@@ -254,6 +254,7 @@ namespace CrazyRL
             else
             {
                 this.tableOfDetails.Visible = false;
+                this.padLocationMap.Visible = false;
             }
             this.ListCheckButtons(allLaunchesList);
         }
