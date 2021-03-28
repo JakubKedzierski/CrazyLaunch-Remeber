@@ -24,8 +24,8 @@ namespace CrazyRL
             if (string.IsNullOrEmpty(url)) return false;
 
             padLocationMap.Navigate(this.url);
-            var browser = padLocationMap.ActiveXInstance as SHDocVw.WebBrowser;
-            browser.ExecWB(SHDocVw.OLECMDID.OLECMDID_OPTICAL_ZOOM, SHDocVw.OLECMDEXECOPT.OLECMDEXECOPT_DODEFAULT, 40, IntPtr.Zero);
+            //var browser = (padLocationMap.ActiveXInstance as SHDocVw.WebBrowser);
+            //browser.ExecWB(SHDocVw.OLECMDID.OLECMDID_OPTICAL_ZOOM, SHDocVw.OLECMDEXECOPT.OLECMDEXECOPT_DODEFAULT, 40, IntPtr.Zero);
 
             return true;
         }
@@ -34,5 +34,7 @@ namespace CrazyRL
         {
             run();
         }
+
+
     }
 }
