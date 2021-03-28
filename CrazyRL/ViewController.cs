@@ -132,10 +132,10 @@ namespace CrazyRL
 
             using (var context = new LaunchContext())
             {
-                Launch launch = context.launches.Find(launchToEdit.LaunchId);
-                launch = launchToEdit;
+                Launch launchToRemove = context.launches.Find(launchToEdit.LaunchId);
+                context.launches.Remove(launchToRemove);
 
-                context.launches.Add(launch);
+                context.launches.Add(launchToEdit);
                 context.SaveChanges();
             }
 
