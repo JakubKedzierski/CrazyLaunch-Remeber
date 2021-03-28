@@ -219,11 +219,10 @@ namespace CrazyRL
         /// <param name="e"></param>
         private void allLaunchesList_SelectedIndexChanged(object sender, EventArgs e)
         {
+
             var selected = allLaunchesList.SelectedItems;
             if (selected.Count == 1)
             {
-                detailsBox.Visible = true;
-
                 using (var context = new LaunchContext())
                 {
 
@@ -240,11 +239,7 @@ namespace CrazyRL
                 }
                 
             }
-            else
-            {
-                detailsBox.Visible = false;
-                padLocationMap.Visible = false;
-            }
+
             this.ListCheckButtons(allLaunchesList);
         }
 
@@ -264,19 +259,19 @@ namespace CrazyRL
         private void showMapButton_Click(object sender, EventArgs e)
         {
             showMapButton.Enabled = false;
+            string locationUrl;
 
             using (var context = new LaunchContext())
             {
-
                 ListViewItem item = allLaunchesList.SelectedItems[0];
                 Launch launch = context.launches.Find(int.Parse(item.Text));
-
-                padLocationMap.Navigate(launch.locationGoogleMapsUrl);
-                var browser = padLocationMap.ActiveXInstance as SHDocVw.WebBrowser;
-                browser.ExecWB(SHDocVw.OLECMDID.OLECMDID_OPTICAL_ZOOM, SHDocVw.OLECMDEXECOPT.OLECMDEXECOPT_DODEFAULT,40, IntPtr.Zero);
+                locationUrl = launch.locationGoogleMapsUrl;
             }
 
-            padLocationMap.Visible = true;
+            MapForm mapForm = new MapForm();
+            mapForm.url = locationUrl;
+            mapForm.ShowDialog();
+
             showMapButton.Enabled = true;
         }
     }

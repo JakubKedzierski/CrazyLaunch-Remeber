@@ -47,12 +47,21 @@ namespace CrazyRL
             {
                 removeButton.Enabled = false;
                 editButton.Enabled = false;
+                detailsBox.Visible = true;
             }
             else
             {
                 removeButton.Enabled = true;
-                if (nofItems > 1) editButton.Enabled = false;
-                else editButton.Enabled = true;
+                if (nofItems > 1)
+                {
+                    editButton.Enabled = false;
+                    detailsBox.Visible = true;
+                }
+                else
+                {
+                    editButton.Enabled = true;
+                    detailsBox.Visible = true;
+                }
             }
         }
 

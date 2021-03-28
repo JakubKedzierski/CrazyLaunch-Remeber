@@ -92,6 +92,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Src_front\MapForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Src_front\MapForm.Designer.cs">
+      <DependentUpon>MapForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Src_front\ViewController.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,6 +116,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Src_front\MapForm.resx">
+      <DependentUpon>MapForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Src_front\ViewController.resx">
       <DependentUpon>ViewController.cs</DependentUpon>
     </EmbeddedResource>

@@ -33,6 +33,10 @@ namespace CrazyRL
             this.tabPageFav = new MetroFramework.Controls.MetroTabPage();
             this.tabPageAll = new MetroFramework.Controls.MetroTabPage();
             this.allLaunchesList = new System.Windows.Forms.ListView();
+            this.IdColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.nameColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.rocketColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.wStartTimeColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.updateProgressBar = new MetroFramework.Controls.MetroProgressBar();
             this.updateFromWebButton = new MetroFramework.Controls.MetroButton();
             this.addButton = new MetroFramework.Controls.MetroButton();
@@ -41,8 +45,9 @@ namespace CrazyRL
             this.editButton = new MetroFramework.Controls.MetroButton();
             this.removeButton = new MetroFramework.Controls.MetroButton();
             this.detailsBox = new System.Windows.Forms.GroupBox();
+            this.launchTimerLabel = new MetroFramework.Controls.MetroLabel();
+            this.showMapButton = new MetroFramework.Controls.MetroButton();
             this.favouriteCheckBox = new MetroFramework.Controls.MetroCheckBox();
-            this.padLocationMap = new System.Windows.Forms.WebBrowser();
             this.tableOfDetails = new System.Windows.Forms.TableLayoutPanel();
             this.windowStartDetail = new System.Windows.Forms.Label();
             this.launchNameLab = new System.Windows.Forms.Label();
@@ -58,12 +63,6 @@ namespace CrazyRL
             this.t0label = new System.Windows.Forms.Label();
             this.windowEndDetail = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.launchTimerLabel = new MetroFramework.Controls.MetroLabel();
-            this.showMapButton = new MetroFramework.Controls.MetroButton();
-            this.IdColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.nameColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.rocketColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.wStartTimeColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabsControl.SuspendLayout();
             this.tabPageAll.SuspendLayout();
             this.detailsBox.SuspendLayout();
@@ -123,6 +122,22 @@ namespace CrazyRL
             this.allLaunchesList.UseCompatibleStateImageBehavior = false;
             this.allLaunchesList.View = System.Windows.Forms.View.Details;
             this.allLaunchesList.SelectedIndexChanged += new System.EventHandler(this.allLaunchesList_SelectedIndexChanged);
+            // 
+            // IdColumn
+            // 
+            this.IdColumn.Text = "Id";
+            // 
+            // nameColumn
+            // 
+            this.nameColumn.Text = "Name";
+            // 
+            // rocketColumn
+            // 
+            this.rocketColumn.Text = "Rocket";
+            // 
+            // wStartTimeColumn
+            // 
+            this.wStartTimeColumn.Text = "Window start time";
             // 
             // updateProgressBar
             // 
@@ -198,16 +213,37 @@ namespace CrazyRL
             this.detailsBox.Controls.Add(this.launchTimerLabel);
             this.detailsBox.Controls.Add(this.showMapButton);
             this.detailsBox.Controls.Add(this.favouriteCheckBox);
-            this.detailsBox.Controls.Add(this.padLocationMap);
             this.detailsBox.Controls.Add(this.tableOfDetails);
             this.detailsBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.detailsBox.Location = new System.Drawing.Point(529, 63);
             this.detailsBox.Name = "detailsBox";
-            this.detailsBox.Size = new System.Drawing.Size(472, 697);
+            this.detailsBox.Size = new System.Drawing.Size(472, 600);
             this.detailsBox.TabIndex = 8;
             this.detailsBox.TabStop = false;
             this.detailsBox.Text = "Launch Details";
             this.detailsBox.Visible = false;
+            // 
+            // launchTimerLabel
+            // 
+            this.launchTimerLabel.AccessibleName = "";
+            this.launchTimerLabel.AutoSize = true;
+            this.launchTimerLabel.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.launchTimerLabel.Location = new System.Drawing.Point(37, 543);
+            this.launchTimerLabel.Name = "launchTimerLabel";
+            this.launchTimerLabel.Size = new System.Drawing.Size(121, 25);
+            this.launchTimerLabel.TabIndex = 9;
+            this.launchTimerLabel.Text = "Launch timer: ";
+            // 
+            // showMapButton
+            // 
+            this.showMapButton.AccessibleName = "";
+            this.showMapButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.showMapButton.Location = new System.Drawing.Point(237, 395);
+            this.showMapButton.Name = "showMapButton";
+            this.showMapButton.Size = new System.Drawing.Size(209, 28);
+            this.showMapButton.TabIndex = 10;
+            this.showMapButton.Text = "Show location on map";
+            this.showMapButton.Click += new System.EventHandler(this.showMapButton_Click);
             // 
             // favouriteCheckBox
             // 
@@ -219,17 +255,6 @@ namespace CrazyRL
             this.favouriteCheckBox.TabIndex = 2;
             this.favouriteCheckBox.Text = "Favourite";
             this.favouriteCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // padLocationMap
-            // 
-            this.padLocationMap.Location = new System.Drawing.Point(37, 429);
-            this.padLocationMap.MinimumSize = new System.Drawing.Size(20, 20);
-            this.padLocationMap.Name = "padLocationMap";
-            this.padLocationMap.ScriptErrorsSuppressed = true;
-            this.padLocationMap.Size = new System.Drawing.Size(409, 206);
-            this.padLocationMap.TabIndex = 1;
-            this.padLocationMap.Url = new System.Uri("http://www.google.com", System.UriKind.Absolute);
-            this.padLocationMap.Visible = false;
             // 
             // tableOfDetails
             // 
@@ -406,44 +431,6 @@ namespace CrazyRL
             this.label2.TabIndex = 16;
             this.label2.Text = "max T-0 (window end)";
             // 
-            // launchTimerLabel
-            // 
-            this.launchTimerLabel.AccessibleName = "";
-            this.launchTimerLabel.AutoSize = true;
-            this.launchTimerLabel.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.launchTimerLabel.Location = new System.Drawing.Point(37, 638);
-            this.launchTimerLabel.Name = "launchTimerLabel";
-            this.launchTimerLabel.Size = new System.Drawing.Size(121, 25);
-            this.launchTimerLabel.TabIndex = 9;
-            this.launchTimerLabel.Text = "Launch timer: ";
-            // 
-            // showMapButton
-            // 
-            this.showMapButton.AccessibleName = "";
-            this.showMapButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.showMapButton.Location = new System.Drawing.Point(237, 395);
-            this.showMapButton.Name = "showMapButton";
-            this.showMapButton.Size = new System.Drawing.Size(209, 28);
-            this.showMapButton.TabIndex = 10;
-            this.showMapButton.Text = "Show location on map";
-            this.showMapButton.Click += new System.EventHandler(this.showMapButton_Click);
-            // 
-            // IdColumn
-            // 
-            this.IdColumn.Text = "Id";
-            // 
-            // nameColumn
-            // 
-            this.nameColumn.Text = "Name";
-            // 
-            // rocketColumn
-            // 
-            this.rocketColumn.Text = "Rocket";
-            // 
-            // wStartTimeColumn
-            // 
-            this.wStartTimeColumn.Text = "Window start time";
-            // 
             // ViewController
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -505,7 +492,6 @@ namespace CrazyRL
         private System.Windows.Forms.Label t0label;
         private System.Windows.Forms.Label windowStartDetail;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.WebBrowser padLocationMap;
         private MetroFramework.Controls.MetroCheckBox favouriteCheckBox;
         private MetroFramework.Controls.MetroButton showMapButton;
         private System.Windows.Forms.ColumnHeader IdColumn;
