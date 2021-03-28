@@ -118,13 +118,9 @@ namespace CrazyRL
 
                 foreach (ListViewItem item in allLaunchesList.SelectedItems)
                 {
-                    foreach (Launch launch in context.launches.ToArray())
-                    {
-                        if (launch.LaunchId.ToString() == item.Text)
-                        {
-                            launchToEdit = launch;
-                        }
-                    }
+
+                    launchToEdit = context.launches.Find(int.Parse(item.Text));
+
                 }
                 context.SaveChanges();
             }
@@ -136,7 +132,10 @@ namespace CrazyRL
 
             using (var context = new LaunchContext())
             {
-                context.launches.Add(launchToEdit);
+                Launch launch = context.launches.Find(launchToEdit.LaunchId);
+                launch = launchToEdit;
+
+                context.launches.Add(launch);
                 context.SaveChanges();
             }
 
@@ -162,13 +161,10 @@ namespace CrazyRL
 
                     foreach (ListViewItem item in allLaunchesList.SelectedItems)
                     {
-                        foreach (Launch launch in context.launches.ToArray())
-                        {
-                            if (launch.LaunchId.ToString() == item.Text)
-                            {
-                                context.launches.Remove(launch);
-                            }
-                        }
+
+                        Launch launchToRemove = context.launches.Find(int.Parse(item.Text));
+                        context.launches.Remove(launchToRemove);
+
                     }
                     context.SaveChanges();
                 }
