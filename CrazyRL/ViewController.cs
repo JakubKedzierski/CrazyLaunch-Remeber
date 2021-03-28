@@ -219,17 +219,40 @@ namespace CrazyRL
         /************************************************************************************************************************/
 
         /// <summary>
-        /// Przerwanie związane z aktualizacją listy dostępnych przycisków.
+        /// Przerwanie związane z aktualizacją listy dostępnych przycisków i wyświetleniem szczegółów
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void allLaunchesList_SelectedIndexChanged(object sender, EventArgs e)
-        {   
-            if(allLaunchesList.SelectedItems.Count != 0)
+        {
+            var selected = allLaunchesList.SelectedItems;
+            if (selected.Count == 1)
+            {
                 this.tableOfDetails.Visible = true;
+                using (var context = new LaunchContext())
+                {
+                    ListViewItem item = selected[0];
+                    
+                    foreach (Launch launch in context.launches.ToArray())
+                        {
+                            if (launch.LaunchId.ToString() == item.Text)
+                            {
+                                launchNameDetail.Text = launch.name;
+                                rocketFullLabelDetail.Text = launch.rocketFullName;
+                                statusLabelDetail.Text = launch.status;
+                                launchProviderLabelDetail.Text = launch.launchProvider;
+                                launchPadLocDetail.Text = launch.location;
+                                windowStartDetail.Text = launch.windowStart.ToString();
+                                windowEndDetail.Text = launch.windowEnd.ToString();
+                            }
+                        }
+                }
+                
+            }
             else
+            {
                 this.tableOfDetails.Visible = false;
-
+            }
             this.ListCheckButtons(allLaunchesList);
         }
 
@@ -245,8 +268,6 @@ namespace CrazyRL
             if (e.KeyCode == Keys.Delete && removeButton.Enabled) removeButton_Click(sender, e);
             if (e.KeyCode == Keys.Return && editButton.Enabled) editButton_Click(sender, e);
         }
-
-
 
     }
 }

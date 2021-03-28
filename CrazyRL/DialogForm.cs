@@ -38,8 +38,8 @@ namespace CrazyRL
             editedLaunch.launchProvider         = launchProviderTextBox.Text;
             editedLaunch.location               = locationTextBox.Text;
             editedLaunch.locationGoogleMapsUrl  = gmapsUrlTextBox.Text;
-            editedLaunch.windowStart            = wStartTimePicker.Value.ToString();
-            editedLaunch.windowEnd              = wEndTimePicker.Value.ToString();
+            editedLaunch.windowStart            = wStartTimePicker.Value;
+            editedLaunch.windowEnd              = wEndTimePicker.Value;
 
             this.DialogResult = DialogResult.OK;
             Close();

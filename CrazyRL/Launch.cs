@@ -15,8 +15,8 @@ namespace CrazyRL
         public int LaunchId { get; set; }
         public String name { get; set; }
         public String status { get; set; }
-        public String windowStart { get; set; }
-        public String windowEnd { get; set; }
+        public DateTime windowStart { get; set; }
+        public DateTime windowEnd { get; set; }
         public String launchProvider { get; set; }
         public String rocketFullName { get; set; }
         public String location { get; set; }
@@ -46,8 +46,8 @@ namespace CrazyRL
             Launch launch = (Launch)obj;
             if (string.Compare(launch.name,name) != 0) return false ;
             if (string.Compare(launch.status, status) != 0) return false;
-            if (string.Compare(launch.windowStart, windowStart) != 0) return false;
-            if (string.Compare(launch.windowEnd, windowEnd) != 0) return false;
+            if (!launch.windowStart.Equals(windowStart)) return false;
+            if (!launch.windowEnd.Equals(windowEnd)) return false;
             if (string.Compare(launch.launchProvider, launchProvider) != 0) return false;
             if (string.Compare(launch.rocketFullName, rocketFullName) != 0) return false;
             if (string.Compare(launch.location, location) != 0) return false;
@@ -87,7 +87,7 @@ namespace CrazyRL
         /// </summary>
         public string[] ShortData
         {
-            get { return new string[] { this.LaunchId.ToString(), this.name, this.rocketFullName, this.windowStart }; }
+            get { return new string[] { this.LaunchId.ToString(), this.name, this.rocketFullName, this.windowStart.ToString() }; }
         }
     }
 }

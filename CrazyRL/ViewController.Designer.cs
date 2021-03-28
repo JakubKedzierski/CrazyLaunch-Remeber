@@ -42,12 +42,21 @@ namespace CrazyRL
             this.removeButton = new MetroFramework.Controls.MetroButton();
             this.detailsBox = new System.Windows.Forms.GroupBox();
             this.tableOfDetails = new System.Windows.Forms.TableLayoutPanel();
-            this.launchTimerLabel = new MetroFramework.Controls.MetroLabel();
+            this.windowStartDetail = new System.Windows.Forms.Label();
             this.launchNameLab = new System.Windows.Forms.Label();
             this.statusLabel = new System.Windows.Forms.Label();
             this.launchProvLab = new System.Windows.Forms.Label();
             this.rocketLabel = new System.Windows.Forms.Label();
             this.launchNameDetail = new System.Windows.Forms.Label();
+            this.statusLabelDetail = new System.Windows.Forms.Label();
+            this.launchProviderLabelDetail = new System.Windows.Forms.Label();
+            this.rocketFullLabelDetail = new System.Windows.Forms.Label();
+            this.launchPadLabel = new System.Windows.Forms.Label();
+            this.launchPadLocDetail = new System.Windows.Forms.Label();
+            this.t0label = new System.Windows.Forms.Label();
+            this.windowEndDetail = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.launchTimerLabel = new MetroFramework.Controls.MetroLabel();
             this.tabsControl.SuspendLayout();
             this.tabPageAll.SuspendLayout();
             this.detailsBox.SuspendLayout();
@@ -99,7 +108,6 @@ namespace CrazyRL
             this.allLaunchesList.TabIndex = 2;
             this.allLaunchesList.UseCompatibleStateImageBehavior = false;
             this.allLaunchesList.SelectedIndexChanged += new System.EventHandler(this.allLaunchesList_SelectedIndexChanged);
-
             // 
             // updateProgressBar
             // 
@@ -183,25 +191,178 @@ namespace CrazyRL
             // 
             // tableOfDetails
             // 
+            this.tableOfDetails.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableOfDetails.ColumnCount = 2;
             this.tableOfDetails.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 47.5F));
             this.tableOfDetails.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 52.5F));
+            this.tableOfDetails.Controls.Add(this.windowStartDetail, 1, 5);
             this.tableOfDetails.Controls.Add(this.launchNameLab, 0, 0);
             this.tableOfDetails.Controls.Add(this.statusLabel, 0, 1);
             this.tableOfDetails.Controls.Add(this.launchProvLab, 0, 2);
             this.tableOfDetails.Controls.Add(this.rocketLabel, 0, 3);
             this.tableOfDetails.Controls.Add(this.launchNameDetail, 1, 0);
-            this.tableOfDetails.Location = new System.Drawing.Point(37, 93);
+            this.tableOfDetails.Controls.Add(this.statusLabelDetail, 1, 1);
+            this.tableOfDetails.Controls.Add(this.launchProviderLabelDetail, 1, 2);
+            this.tableOfDetails.Controls.Add(this.rocketFullLabelDetail, 1, 3);
+            this.tableOfDetails.Controls.Add(this.launchPadLabel, 0, 4);
+            this.tableOfDetails.Controls.Add(this.launchPadLocDetail, 1, 4);
+            this.tableOfDetails.Controls.Add(this.t0label, 0, 5);
+            this.tableOfDetails.Controls.Add(this.windowEndDetail, 1, 6);
+            this.tableOfDetails.Controls.Add(this.label2, 0, 6);
+            this.tableOfDetails.Location = new System.Drawing.Point(37, 59);
             this.tableOfDetails.Name = "tableOfDetails";
-            this.tableOfDetails.RowCount = 5;
-            this.tableOfDetails.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 47.94521F));
-            this.tableOfDetails.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 52.05479F));
-            this.tableOfDetails.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 65F));
-            this.tableOfDetails.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 65F));
+            this.tableOfDetails.RowCount = 7;
+            this.tableOfDetails.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 56F));
+            this.tableOfDetails.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 44F));
+            this.tableOfDetails.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 48F));
+            this.tableOfDetails.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 56F));
+            this.tableOfDetails.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 46F));
+            this.tableOfDetails.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 47F));
+            this.tableOfDetails.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableOfDetails.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableOfDetails.Size = new System.Drawing.Size(429, 263);
+            this.tableOfDetails.Size = new System.Drawing.Size(409, 330);
             this.tableOfDetails.TabIndex = 0;
             this.tableOfDetails.Visible = false;
+            // 
+            // windowStartDetail
+            // 
+            this.windowStartDetail.AutoSize = true;
+            this.windowStartDetail.Location = new System.Drawing.Point(197, 245);
+            this.windowStartDetail.Name = "windowStartDetail";
+            this.windowStartDetail.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            this.windowStartDetail.Size = new System.Drawing.Size(41, 25);
+            this.windowStartDetail.TabIndex = 15;
+            this.windowStartDetail.Text = "label3";
+            // 
+            // launchNameLab
+            // 
+            this.launchNameLab.AutoSize = true;
+            this.launchNameLab.Location = new System.Drawing.Point(4, 1);
+            this.launchNameLab.Name = "launchNameLab";
+            this.launchNameLab.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            this.launchNameLab.Size = new System.Drawing.Size(86, 25);
+            this.launchNameLab.TabIndex = 0;
+            this.launchNameLab.Text = "Launch name:";
+            // 
+            // statusLabel
+            // 
+            this.statusLabel.AutoSize = true;
+            this.statusLabel.Location = new System.Drawing.Point(4, 52);
+            this.statusLabel.Name = "statusLabel";
+            this.statusLabel.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            this.statusLabel.Size = new System.Drawing.Size(44, 25);
+            this.statusLabel.TabIndex = 1;
+            this.statusLabel.Text = "Status:";
+            // 
+            // launchProvLab
+            // 
+            this.launchProvLab.AutoSize = true;
+            this.launchProvLab.Location = new System.Drawing.Point(4, 92);
+            this.launchProvLab.Name = "launchProvLab";
+            this.launchProvLab.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            this.launchProvLab.Size = new System.Drawing.Size(98, 25);
+            this.launchProvLab.TabIndex = 2;
+            this.launchProvLab.Text = "Launch provider:";
+            // 
+            // rocketLabel
+            // 
+            this.rocketLabel.AutoSize = true;
+            this.rocketLabel.Location = new System.Drawing.Point(4, 141);
+            this.rocketLabel.Name = "rocketLabel";
+            this.rocketLabel.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            this.rocketLabel.Size = new System.Drawing.Size(99, 25);
+            this.rocketLabel.TabIndex = 3;
+            this.rocketLabel.Text = "Rocket full name";
+            // 
+            // launchNameDetail
+            // 
+            this.launchNameDetail.AutoSize = true;
+            this.launchNameDetail.Location = new System.Drawing.Point(197, 1);
+            this.launchNameDetail.Name = "launchNameDetail";
+            this.launchNameDetail.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            this.launchNameDetail.Size = new System.Drawing.Size(41, 25);
+            this.launchNameDetail.TabIndex = 4;
+            this.launchNameDetail.Text = "label1";
+            // 
+            // statusLabelDetail
+            // 
+            this.statusLabelDetail.AutoSize = true;
+            this.statusLabelDetail.Location = new System.Drawing.Point(197, 52);
+            this.statusLabelDetail.Name = "statusLabelDetail";
+            this.statusLabelDetail.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            this.statusLabelDetail.Size = new System.Drawing.Size(41, 25);
+            this.statusLabelDetail.TabIndex = 6;
+            this.statusLabelDetail.Text = "label2";
+            // 
+            // launchProviderLabelDetail
+            // 
+            this.launchProviderLabelDetail.AutoSize = true;
+            this.launchProviderLabelDetail.Location = new System.Drawing.Point(197, 92);
+            this.launchProviderLabelDetail.Name = "launchProviderLabelDetail";
+            this.launchProviderLabelDetail.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            this.launchProviderLabelDetail.Size = new System.Drawing.Size(41, 25);
+            this.launchProviderLabelDetail.TabIndex = 7;
+            this.launchProviderLabelDetail.Text = "label3";
+            // 
+            // rocketFullLabelDetail
+            // 
+            this.rocketFullLabelDetail.AutoSize = true;
+            this.rocketFullLabelDetail.Location = new System.Drawing.Point(197, 141);
+            this.rocketFullLabelDetail.Name = "rocketFullLabelDetail";
+            this.rocketFullLabelDetail.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            this.rocketFullLabelDetail.Size = new System.Drawing.Size(41, 25);
+            this.rocketFullLabelDetail.TabIndex = 8;
+            this.rocketFullLabelDetail.Text = "label4";
+            // 
+            // launchPadLabel
+            // 
+            this.launchPadLabel.AutoSize = true;
+            this.launchPadLabel.Location = new System.Drawing.Point(4, 198);
+            this.launchPadLabel.Name = "launchPadLabel";
+            this.launchPadLabel.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            this.launchPadLabel.Size = new System.Drawing.Size(118, 25);
+            this.launchPadLabel.TabIndex = 9;
+            this.launchPadLabel.Text = "Launch pad location";
+            // 
+            // launchPadLocDetail
+            // 
+            this.launchPadLocDetail.AutoSize = true;
+            this.launchPadLocDetail.Location = new System.Drawing.Point(197, 198);
+            this.launchPadLocDetail.Name = "launchPadLocDetail";
+            this.launchPadLocDetail.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            this.launchPadLocDetail.Size = new System.Drawing.Size(41, 25);
+            this.launchPadLocDetail.TabIndex = 10;
+            this.launchPadLocDetail.Text = "label3";
+            // 
+            // t0label
+            // 
+            this.t0label.AutoSize = true;
+            this.t0label.Location = new System.Drawing.Point(4, 245);
+            this.t0label.Name = "t0label";
+            this.t0label.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            this.t0label.Size = new System.Drawing.Size(128, 25);
+            this.t0label.TabIndex = 14;
+            this.t0label.Text = "min T-0 (window start)";
+            // 
+            // windowEndDetail
+            // 
+            this.windowEndDetail.AutoSize = true;
+            this.windowEndDetail.Location = new System.Drawing.Point(197, 293);
+            this.windowEndDetail.Name = "windowEndDetail";
+            this.windowEndDetail.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            this.windowEndDetail.Size = new System.Drawing.Size(73, 25);
+            this.windowEndDetail.TabIndex = 5;
+            this.windowEndDetail.Text = "window end";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(4, 293);
+            this.label2.Name = "label2";
+            this.label2.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            this.label2.Size = new System.Drawing.Size(129, 25);
+            this.label2.TabIndex = 16;
+            this.label2.Text = "max T-0 (window end)";
             // 
             // launchTimerLabel
             // 
@@ -212,55 +373,6 @@ namespace CrazyRL
             this.launchTimerLabel.Size = new System.Drawing.Size(121, 25);
             this.launchTimerLabel.TabIndex = 9;
             this.launchTimerLabel.Text = "Launch timer: ";
-            // 
-            // launchNameLab
-            // 
-            this.launchNameLab.AutoSize = true;
-            this.launchNameLab.Location = new System.Drawing.Point(3, 0);
-            this.launchNameLab.Name = "launchNameLab";
-            this.launchNameLab.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
-            this.launchNameLab.Size = new System.Drawing.Size(86, 25);
-            this.launchNameLab.TabIndex = 0;
-            this.launchNameLab.Text = "Launch name:";
-            // 
-            // statusLabel
-            // 
-            this.statusLabel.AutoSize = true;
-            this.statusLabel.Location = new System.Drawing.Point(3, 54);
-            this.statusLabel.Name = "statusLabel";
-            this.statusLabel.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
-            this.statusLabel.Size = new System.Drawing.Size(44, 25);
-            this.statusLabel.TabIndex = 1;
-            this.statusLabel.Text = "Status:";
-            // 
-            // launchProvLab
-            // 
-            this.launchProvLab.AutoSize = true;
-            this.launchProvLab.Location = new System.Drawing.Point(3, 112);
-            this.launchProvLab.Name = "launchProvLab";
-            this.launchProvLab.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
-            this.launchProvLab.Size = new System.Drawing.Size(98, 25);
-            this.launchProvLab.TabIndex = 2;
-            this.launchProvLab.Text = "Launch provider:";
-            // 
-            // rocketLabel
-            // 
-            this.rocketLabel.AutoSize = true;
-            this.rocketLabel.Location = new System.Drawing.Point(3, 177);
-            this.rocketLabel.Name = "rocketLabel";
-            this.rocketLabel.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
-            this.rocketLabel.Size = new System.Drawing.Size(99, 25);
-            this.rocketLabel.TabIndex = 3;
-            this.rocketLabel.Text = "Rocket full name";
-            // 
-            // launchNameDetail
-            // 
-            this.launchNameDetail.AutoSize = true;
-            this.launchNameDetail.Location = new System.Drawing.Point(206, 0);
-            this.launchNameDetail.Name = "launchNameDetail";
-            this.launchNameDetail.Size = new System.Drawing.Size(7, 30);
-            this.launchNameDetail.TabIndex = 4;
-            this.launchNameDetail.Text = "\r\n\r\n";
             // 
             // ViewController
             // 
@@ -315,5 +427,14 @@ namespace CrazyRL
         private System.Windows.Forms.Label launchProvLab;
         private System.Windows.Forms.Label rocketLabel;
         private System.Windows.Forms.Label launchNameDetail;
+        private System.Windows.Forms.Label windowEndDetail;
+        private System.Windows.Forms.Label statusLabelDetail;
+        private System.Windows.Forms.Label launchProviderLabelDetail;
+        private System.Windows.Forms.Label rocketFullLabelDetail;
+        private System.Windows.Forms.Label launchPadLabel;
+        private System.Windows.Forms.Label launchPadLocDetail;
+        private System.Windows.Forms.Label t0label;
+        private System.Windows.Forms.Label windowStartDetail;
+        private System.Windows.Forms.Label label2;
     }
 }

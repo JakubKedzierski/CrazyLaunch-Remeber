@@ -102,10 +102,15 @@ namespace CrazyRL
                     launch.name = launchData["name"].ToString();
                     JsonObject nestedLaunchInfo = (JsonObject)launchData["status"];
                     launch.status = nestedLaunchInfo["name"].ToString();
+
+                    var windowStartString = launchData["window_start"].ToString();                
+                    launch.windowStart = DateTime.ParseExact(windowStartString, "yyyy-MM-ddTHH:mm:ssZ",
+                                System.Globalization.CultureInfo.InvariantCulture);
                     
-                    launch.windowStart = launchData["window_start"].ToString();
-                    launch.windowEnd = launchData["window_end"].ToString();
-                    
+                    var windowEndString = launchData["window_end"].ToString();
+                    launch.windowEnd = DateTime.ParseExact(windowEndString, "yyyy-MM-ddTHH:mm:ssZ",
+                                System.Globalization.CultureInfo.InvariantCulture);
+
                     nestedLaunchInfo = (JsonObject)launchData["launch_service_provider"];
                     launch.launchProvider = nestedLaunchInfo["name"].ToString();
                     
