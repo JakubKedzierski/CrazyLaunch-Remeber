@@ -66,12 +66,14 @@ namespace CrazyRL
         /// <param name="e"></param>
         private void DialogForm_Load(object sender, EventArgs e)
         {
-            nameTextBox.Text        = editedLaunch.name;
-            statusTextBox.Text      = editedLaunch.status;
-            rocketTextBox.Text      = editedLaunch.rocketFullName;
-            launchProviderTextBox.Text = editedLaunch.launchProvider;
-            locationTextBox.Text    = editedLaunch.location;
-            gmapsUrlTextBox.Text    = editedLaunch.locationGoogleMapsUrl;
+            nameTextBox.Text            = editedLaunch.name;
+            statusTextBox.Text          = editedLaunch.status;
+            rocketTextBox.Text          = editedLaunch.rocketFullName;
+            launchProviderTextBox.Text  = editedLaunch.launchProvider;
+            locationTextBox.Text        = editedLaunch.location;
+            gmapsUrlTextBox.Text        = editedLaunch.locationGoogleMapsUrl;
+            wStartTimePicker.Value      = editedLaunch.windowStart;
+            wEndTimePicker.Value        = editedLaunch.windowEnd;
         }
 
      
