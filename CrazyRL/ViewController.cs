@@ -225,29 +225,24 @@ namespace CrazyRL
             if (selected.Count == 1)
             {
                 this.tableOfDetails.Visible = true;
-            
                 this.padLocationMap.Visible = true;
+
                 using (var context = new LaunchContext())
                 {
-                    ListViewItem item = selected[0];
 
-                    
-                    foreach (Launch launch in context.launches.ToArray())
-                    {
-                            if (launch.LaunchId.ToString() == item.Text)
-                            {
-                                launchNameDetail.Text = launch.name;
-                                rocketFullLabelDetail.Text = launch.rocketFullName;
-                                statusLabelDetail.Text = launch.status;
-                                launchProviderLabelDetail.Text = launch.launchProvider;
-                                launchPadLocDetail.Text = launch.location;
-                                windowStartDetail.Text = launch.windowStart.ToString();
-                                windowEndDetail.Text = launch.windowEnd.ToString();
-                                this.padLocationMap.Navigate("https://www.google.com/maps/place/" + launch.location);
-                                var browser = padLocationMap.ActiveXInstance as SHDocVw.WebBrowser;
-                                browser.ExecWB(SHDocVw.OLECMDID.OLECMDID_OPTICAL_ZOOM, SHDocVw.OLECMDEXECOPT.OLECMDEXECOPT_DODEFAULT,40, IntPtr.Zero);
-                        }
-                    }
+                    ListViewItem item = selected[0];
+                    Launch launch = context.launches.Find(int.Parse(item.Text));
+
+                    launchNameDetail.Text = launch.name;
+                    rocketFullLabelDetail.Text = launch.rocketFullName;
+                    statusLabelDetail.Text = launch.status;
+                    launchProviderLabelDetail.Text = launch.launchProvider;
+                    launchPadLocDetail.Text = launch.location;
+                    windowStartDetail.Text = launch.windowStart.ToString();
+                    windowEndDetail.Text = launch.windowEnd.ToString();
+                    this.padLocationMap.Navigate("https://www.google.com/maps/place/" + launch.location);
+                    var browser = padLocationMap.ActiveXInstance as SHDocVw.WebBrowser;
+                    browser.ExecWB(SHDocVw.OLECMDID.OLECMDID_OPTICAL_ZOOM, SHDocVw.OLECMDEXECOPT.OLECMDEXECOPT_DODEFAULT,40, IntPtr.Zero);
                 }
                 
             }
