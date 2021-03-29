@@ -47,6 +47,7 @@ namespace CrazyRL
             this.wStartTimePicker = new System.Windows.Forms.DateTimePicker();
             this.wEndTimeLabel = new MetroFramework.Controls.MetroLabel();
             this.wEndTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.endCheckBox = new MetroFramework.Controls.MetroCheckBox();
             this.SuspendLayout();
             // 
             // nameLabel
@@ -203,11 +204,23 @@ namespace CrazyRL
             this.wEndTimePicker.Size = new System.Drawing.Size(404, 20);
             this.wEndTimePicker.TabIndex = 17;
             // 
+            // endCheckBox
+            // 
+            this.endCheckBox.AutoSize = true;
+            this.endCheckBox.Location = new System.Drawing.Point(24, 442);
+            this.endCheckBox.Name = "endCheckBox";
+            this.endCheckBox.Size = new System.Drawing.Size(140, 15);
+            this.endCheckBox.TabIndex = 18;
+            this.endCheckBox.Text = "The same as start time";
+            this.endCheckBox.UseVisualStyleBackColor = true;
+            this.endCheckBox.Click += new System.EventHandler(this.endCheckBox_Click);
+            // 
             // DialogForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(450, 600);
+            this.Controls.Add(this.endCheckBox);
             this.Controls.Add(this.wEndTimePicker);
             this.Controls.Add(this.wEndTimeLabel);
             this.Controls.Add(this.wStartTimePicker);
@@ -257,5 +270,6 @@ namespace CrazyRL
         private System.Windows.Forms.DateTimePicker wStartTimePicker;
         private MetroFramework.Controls.MetroLabel wEndTimeLabel;
         private System.Windows.Forms.DateTimePicker wEndTimePicker;
+        private MetroFramework.Controls.MetroCheckBox endCheckBox;
     }
 }

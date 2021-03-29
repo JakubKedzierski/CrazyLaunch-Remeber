@@ -45,7 +45,10 @@ namespace CrazyRL
             editedLaunch.location               = locationTextBox.Text;
             editedLaunch.locationGoogleMapsUrl  = gmapsUrlTextBox.Text;
             editedLaunch.windowStart            = wStartTimePicker.Value;
-            editedLaunch.windowEnd              = wEndTimePicker.Value;
+
+            if (endCheckBox.Checked)
+                editedLaunch.windowEnd          = wStartTimePicker.Value;
+            else editedLaunch.windowEnd         = wEndTimePicker.Value;
 
             this.DialogResult = DialogResult.OK;
             Close();
@@ -95,6 +98,12 @@ namespace CrazyRL
             
         }
 
-     
+        /************************************************************************************************************************/
+
+        private void endCheckBox_Click(object sender, EventArgs e)
+        {
+            if (endCheckBox.Checked) wEndTimePicker.Enabled = false;
+            else wEndTimePicker.Enabled = true;
+        }
     }
 }

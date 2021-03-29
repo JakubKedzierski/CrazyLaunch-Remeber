@@ -7,9 +7,11 @@ using System.Windows.Forms;
 
 namespace CrazyRL
 {
+    /// <summary>
+    /// Część klasy ViewController zarządzająca głównymi przyciskami programu (zdarzeniami z nich pochodzącymi).
+    /// </summary>
     partial class ViewController
     {
-        /* PODSTAWOWE PRZYCISKI: */
 
         /// <summary>
         /// Obsługa przerwania po naciśnięciu przycisku "update from web" - Pobiera poprzez APIParser odpowiednie dane i wczytuje je do bazy danych
