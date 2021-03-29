@@ -82,6 +82,9 @@
     <Compile Include="Src_back\LaunchTimer.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Src_front\ButtonsEvents.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Src_front\DialogForm.cs">
       <SubType>Form</SubType>
     </Compile>

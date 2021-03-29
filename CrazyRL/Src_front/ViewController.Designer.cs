@@ -50,6 +50,7 @@ namespace CrazyRL
             this.editButton = new MetroFramework.Controls.MetroButton();
             this.removeButton = new MetroFramework.Controls.MetroButton();
             this.detailsBox = new System.Windows.Forms.GroupBox();
+            this.favCheckBox = new MetroFramework.Controls.MetroCheckBox();
             this.locationLink = new MetroFramework.Controls.MetroLink();
             this.timeLeftLabel = new MetroFramework.Controls.MetroLabel();
             this.launchTimerLabel = new MetroFramework.Controls.MetroLabel();
@@ -68,7 +69,6 @@ namespace CrazyRL
             this.t0label = new System.Windows.Forms.Label();
             this.windowEndDetail = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.favCheckBox = new MetroFramework.Controls.MetroCheckBox();
             this.tabsControl.SuspendLayout();
             this.tabPageFav.SuspendLayout();
             this.tabPageAll.SuspendLayout();
@@ -118,6 +118,7 @@ namespace CrazyRL
             this.favLaunchesList.TabIndex = 9;
             this.favLaunchesList.UseCompatibleStateImageBehavior = false;
             this.favLaunchesList.View = System.Windows.Forms.View.Details;
+            this.favLaunchesList.SelectedIndexChanged += new System.EventHandler(this.favLaunchesList_SelectedIndexChanged);
             // 
             // columnHeader1
             // 
@@ -267,6 +268,17 @@ namespace CrazyRL
             this.detailsBox.TabStop = false;
             this.detailsBox.Text = "Launch Details";
             this.detailsBox.Visible = false;
+            // 
+            // favCheckBox
+            // 
+            this.favCheckBox.AutoSize = true;
+            this.favCheckBox.Location = new System.Drawing.Point(44, 400);
+            this.favCheckBox.Name = "favCheckBox";
+            this.favCheckBox.Size = new System.Drawing.Size(72, 15);
+            this.favCheckBox.TabIndex = 14;
+            this.favCheckBox.Text = "Favourite";
+            this.favCheckBox.UseVisualStyleBackColor = true;
+            this.favCheckBox.Click += new System.EventHandler(this.favCheckBox_Click);
             // 
             // locationLink
             // 
@@ -473,17 +485,6 @@ namespace CrazyRL
             this.label2.Size = new System.Drawing.Size(129, 25);
             this.label2.TabIndex = 16;
             this.label2.Text = "max T-0 (window end)";
-            // 
-            // favCheckBox
-            // 
-            this.favCheckBox.AutoSize = true;
-            this.favCheckBox.Location = new System.Drawing.Point(44, 400);
-            this.favCheckBox.Name = "favCheckBox";
-            this.favCheckBox.Size = new System.Drawing.Size(72, 15);
-            this.favCheckBox.TabIndex = 14;
-            this.favCheckBox.Text = "Favourite";
-            this.favCheckBox.UseVisualStyleBackColor = true;
-            this.favCheckBox.Click += new System.EventHandler(this.favCheckBox_Click);
             // 
             // ViewController
             // 

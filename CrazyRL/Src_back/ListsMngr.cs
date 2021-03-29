@@ -15,22 +15,27 @@ namespace CrazyRL
         /// <summary>
         /// Przeładowanie (odświerzenie) na nowo wierszy w liście.
         /// </summary>
-        private void ListReload(ListView listV, bool onlyFav = false)
+        private void ListReload()
         {
-            listV.Items.Clear();
+            bool favOnly = false;
+            if (activeList == favLaunchesList) favOnly = true;
+
+            activeList.Items.Clear();
 
             using (var context = new LaunchContext())
             {
                 foreach (Launch launch in context.launches.ToArray())
                 {
-                    if (onlyFav && !launch.favourite) continue;
-                    listV.Items.Add(new ListViewItem(launch.ShortData));
+                    if (favOnly && !launch.favourite) continue;
+                    activeList.Items.Add(new ListViewItem(launch.ShortData));
                 }
-
-                if (listV.Items.Count > 0) listV.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
-                else listV.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
-                listV.Columns[0].Width = 0;
             }
+
+            if (activeList.Items.Count > 0) activeList.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            else activeList.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+            activeList.Columns[0].Width = 0;
+            
+            ListCheckButtons();
         }
 
         /************************************************************************************************************************/
@@ -41,7 +46,7 @@ namespace CrazyRL
         /// <param name="listV">Lista, na podstawie której odświeżać przyciski</param>
         private void ListCheckButtons()
         {
-            int nofItems = tabsControl.SelectedIndex == 1 ? allLaunchesList.SelectedItems.Count : favLaunchesList.SelectedItems.Count;
+            int nofItems = activeList.SelectedItems.Count;
 
             if (nofItems == 1)
             {
@@ -61,6 +66,34 @@ namespace CrazyRL
                 detailsBox.Visible = false;
             }
             
+        }
+
+        /************************************************************************************************************************/
+
+        private void ShowSelecterLaunchDetails()
+        {
+            var selected = activeList.SelectedItems;
+            if (selected.Count == 1)
+            {
+                using (var context = new LaunchContext())
+                {
+
+                    ListViewItem item = selected[0];
+                    activeLaunch = context.launches.Find(int.Parse(item.Text));
+
+                    launchNameDetail.Text = activeLaunch.name;
+                    rocketFullLabelDetail.Text = activeLaunch.rocketFullName;
+                    statusLabelDetail.Text = activeLaunch.status;
+                    launchProviderLabelDetail.Text = activeLaunch.launchProvider;
+                    launchPadLocDetail.Text = activeLaunch.location;
+                    windowStartDetail.Text = activeLaunch.windowStart.ToString();
+                    windowEndDetail.Text = activeLaunch.windowEnd.ToString();
+
+                    if (activeLaunch.favourite) favCheckBox.Checked = true;
+                    else favCheckBox.Checked = false;
+                }
+
+            }
         }
 
 
