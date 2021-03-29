@@ -41,8 +41,16 @@ namespace CrazyRL
         private void ListCheckButtons()
         {
             int nofItems = -1;
-            if (tabsControl.SelectedIndex == 1) nofItems = allLaunchesList.SelectedItems.Count;
-            else nofItems = favLaunchesList.SelectedItems.Count;
+            if (tabsControl.SelectedIndex == 1)
+            {
+                nofItems = allLaunchesList.SelectedItems.Count;
+                favouriteButton.Text = "Add to favourites";
+            }
+            else
+            {
+                nofItems = favLaunchesList.SelectedItems.Count;
+                favouriteButton.Text = "Remove from favourites";
+            }
 
             if (nofItems == 1)
             {

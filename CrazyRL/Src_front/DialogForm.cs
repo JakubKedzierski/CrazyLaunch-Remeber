@@ -32,6 +32,12 @@ namespace CrazyRL
         /// <param name="e"></param>
         private void okButton_Click(object sender, EventArgs e)
         {
+            if(string.IsNullOrWhiteSpace(nameTextBox.Text))
+            {
+                MessageBox.Show("Name not filled", "Saving launch error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                return;
+            }
+
             editedLaunch.name                   = nameTextBox.Text;
             editedLaunch.status                 = statusTextBox.Text;
             editedLaunch.rocketFullName         = rocketTextBox.Text;
