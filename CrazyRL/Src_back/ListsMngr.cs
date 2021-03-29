@@ -9,7 +9,7 @@ namespace CrazyRL
     /// <summary>
     /// Klasa zarządzająca oknem programu. Część posiadająca metody związane z obsługą list interfejsu użytkownika.
     /// </summary>
-    public partial class ViewController
+    partial class ViewController
     {
 
         /// <summary>

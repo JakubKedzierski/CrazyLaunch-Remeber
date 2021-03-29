@@ -208,6 +208,7 @@ namespace CrazyRL
         private void ViewController_Load(object sender, EventArgs e)
         {
             this.ListReload(allLaunchesList);
+            this.StartTimer();
         }
 
         /************************************************************************************************************************/
@@ -256,6 +257,8 @@ namespace CrazyRL
             if (e.KeyCode == Keys.Return && editButton.Enabled) editButton_Click(sender, e);
         }
 
+        /************************************************************************************************************************/
+
         private void showMapButton_Click(object sender, EventArgs e)
         {
             showMapButton.Enabled = false;
@@ -275,9 +278,13 @@ namespace CrazyRL
             showMapButton.Enabled = true;
         }
 
+        /************************************************************************************************************************/
+
         private void tabsControl_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.ListCheckButtons();
         }
+
+
     }
 }
