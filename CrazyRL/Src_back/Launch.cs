@@ -21,6 +21,7 @@ namespace CrazyRL
         public String rocketFullName { get; set; }
         public String location { get; set; }
         public String locationGoogleMapsUrl { get; set; }
+        public bool favourite { get; set; }
 
         /************************************************************************************************************************/
         public override string ToString()

@@ -15,7 +15,7 @@ namespace CrazyRL
         /// <summary>
         /// Przeładowanie (odświerzenie) na nowo wierszy w liście.
         /// </summary>
-        private void ListReload(ListView listV)
+        private void ListReload(ListView listV, bool onlyFav = false)
         {
             listV.Items.Clear();
 
@@ -23,6 +23,7 @@ namespace CrazyRL
             {
                 foreach (Launch launch in context.launches.ToArray())
                 {
+                    if (onlyFav && !launch.favourite) continue;
                     listV.Items.Add(new ListViewItem(launch.ShortData));
                 }
 
@@ -40,17 +41,7 @@ namespace CrazyRL
         /// <param name="listV">Lista, na podstawie której odświeżać przyciski</param>
         private void ListCheckButtons()
         {
-            int nofItems = -1;
-            if (tabsControl.SelectedIndex == 1)
-            {
-                nofItems = allLaunchesList.SelectedItems.Count;
-                favouriteButton.Text = "Add to favourites";
-            }
-            else
-            {
-                nofItems = favLaunchesList.SelectedItems.Count;
-                favouriteButton.Text = "Remove from favourites";
-            }
+            int nofItems = tabsControl.SelectedIndex == 1 ? allLaunchesList.SelectedItems.Count : favLaunchesList.SelectedItems.Count;
 
             if (nofItems == 1)
             {

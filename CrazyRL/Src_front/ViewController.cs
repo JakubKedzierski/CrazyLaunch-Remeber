@@ -227,6 +227,9 @@ namespace CrazyRL
                     launchPadLocDetail.Text = activeLaunch.location;
                     windowStartDetail.Text = activeLaunch.windowStart.ToString();
                     windowEndDetail.Text = activeLaunch.windowEnd.ToString();
+
+                    if (activeLaunch.favourite) favCheckBox.Checked = true;
+                    else favCheckBox.Checked = false;
                 }
 
             }
@@ -251,6 +254,12 @@ namespace CrazyRL
 
         private void tabsControl_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (tabsControl.SelectedIndex == 1)
+            {
+                this.ListReload(allLaunchesList);
+            }
+            else this.ListReload(favLaunchesList, true);
+
             this.ListCheckButtons();
         }
 
@@ -259,6 +268,19 @@ namespace CrazyRL
         private void locationLink_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start(activeLaunch.locationGoogleMapsUrl);
+        }
+
+        /************************************************************************************************************************/
+
+        private void favCheckBox_Click(object sender, EventArgs e)
+        {
+            using (var context = new LaunchContext())
+            {
+                Launch launch = context.launches.Find(activeLaunch.LaunchId);
+                launch.favourite = !launch.favourite;
+
+                context.SaveChanges();
+            }
         }
     }
 }
