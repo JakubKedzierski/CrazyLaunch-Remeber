@@ -13,7 +13,7 @@ namespace CrazyRL
 
         public void StartTimer()
         {
-            System.Timers.Timer launchTimer = new System.Timers.Timer(1000);
+            System.Timers.Timer launchTimer = new System.Timers.Timer(250);
 
             launchTimer.Elapsed += OnTimedEvent;
             launchTimer.AutoReset = true;
@@ -33,11 +33,14 @@ namespace CrazyRL
             }
             else
             {
-                newLabel = (DateTime.Now.Subtract(activeLaunch.windowStart)).ToString();
+                newLabel = DateTime.Now.Subtract(activeLaunch.windowStart).ToString();
+                newLabel = newLabel.Substring(0, newLabel.Length - 8);
             }
 
             Action timerUpdate = () => timeLeftLabel.Text = newLabel;
             Invoke(new Action(timerUpdate));
         }
+
+
     }
 }
