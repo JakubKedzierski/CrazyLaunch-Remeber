@@ -22,7 +22,10 @@ namespace CrazyRL
         /// </summary>
         private APIParser api = new APIParser();
 
-        private Launch activeLaunch = null;
+        /// <summary>
+        /// Obiekt przechowujący aktualnie wybrany start.
+        /// </summary>
+        private Launch activeLaunch = new Launch();
 
         /// <summary>
         /// Domyślny konstruktor.
@@ -113,31 +116,19 @@ namespace CrazyRL
         /// <param name="e"></param>
         private void editButton_Click(object sender, EventArgs e)
         {
-            Launch launchToEdit = new Launch();
-
-            using (var context = new LaunchContext())
-            {
-
-                foreach (ListViewItem item in allLaunchesList.SelectedItems)
-                {
-
-                    launchToEdit = context.launches.Find(int.Parse(item.Text));
-
-                }
-                context.SaveChanges();
-            }
 
             DialogForm dialogForm = new DialogForm();
-            dialogForm.editedLaunch = launchToEdit;
-            if (dialogForm.ShowDialog() == DialogResult.OK) launchToEdit = dialogForm.editedLaunch;
+            dialogForm.editedLaunch = activeLaunch;
+
+            if (dialogForm.ShowDialog() == DialogResult.OK) activeLaunch = dialogForm.editedLaunch;
             else return;
 
             using (var context = new LaunchContext())
             {
-                Launch launchToRemove = context.launches.Find(launchToEdit.LaunchId);
+                Launch launchToRemove = context.launches.Find(activeLaunch.LaunchId);
                 context.launches.Remove(launchToRemove);
 
-                context.launches.Add(launchToEdit);
+                context.launches.Add(activeLaunch);
                 context.SaveChanges();
             }
 
@@ -155,25 +146,22 @@ namespace CrazyRL
         {
 
             DialogResult result = MessageBox.Show("Are you sure?", "Remove launches", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-            if (result == DialogResult.OK)
+            if (result != DialogResult.OK) return;
+
+            using (var context = new LaunchContext())
             {
 
-                using (var context = new LaunchContext())
+                foreach (ListViewItem item in allLaunchesList.SelectedItems)
                 {
 
-                    foreach (ListViewItem item in allLaunchesList.SelectedItems)
-                    {
+                    Launch launchToRemove = context.launches.Find(int.Parse(item.Text));
+                    context.launches.Remove(launchToRemove);
 
-                        Launch launchToRemove = context.launches.Find(int.Parse(item.Text));
-                        context.launches.Remove(launchToRemove);
-
-                    }
-                    context.SaveChanges();
                 }
-                this.ListReload(allLaunchesList);
-                this.ListCheckButtons();
+                context.SaveChanges();
             }
-
+            this.ListReload(allLaunchesList);
+            this.ListCheckButtons();
         }
 
         /************************************************************************************************************************/
@@ -242,7 +230,6 @@ namespace CrazyRL
                 }
 
             }
-            else activeLaunch = null;
 
             this.ListCheckButtons();
         }

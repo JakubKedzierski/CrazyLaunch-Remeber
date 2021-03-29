@@ -21,7 +21,20 @@ namespace CrazyRL
         }
         private void OnTimedEvent(Object source, ElapsedEventArgs e)
         {
-            string newLabel = (DateTime.Now).ToString();
+            string newLabel;
+
+            if (Math.Abs((DateTime.Now - activeLaunch.windowStart).Days) > 365)
+            {
+                newLabel = (DateTime.Now.Subtract(activeLaunch.windowStart).Days / 365).ToString() + " years";
+            }
+            else if (Math.Abs((DateTime.Now - activeLaunch.windowStart).Days) > 7)
+            {
+                newLabel = DateTime.Now.Subtract(activeLaunch.windowStart).Days.ToString() + " days";
+            }
+            else
+            {
+                newLabel = (DateTime.Now.Subtract(activeLaunch.windowStart)).ToString();
+            }
 
             Action timerUpdate = () => timeLeftLabel.Text = newLabel;
             Invoke(new Action(timerUpdate));
