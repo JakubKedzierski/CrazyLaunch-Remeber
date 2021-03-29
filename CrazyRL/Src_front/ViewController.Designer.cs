@@ -50,8 +50,10 @@ namespace CrazyRL
             this.editButton = new MetroFramework.Controls.MetroButton();
             this.removeButton = new MetroFramework.Controls.MetroButton();
             this.detailsBox = new System.Windows.Forms.GroupBox();
+            this.locationLink = new MetroFramework.Controls.MetroLink();
+            this.timeLeftLabel = new MetroFramework.Controls.MetroLabel();
+            this.favouriteButton = new MetroFramework.Controls.MetroButton();
             this.launchTimerLabel = new MetroFramework.Controls.MetroLabel();
-            this.showMapButton = new MetroFramework.Controls.MetroButton();
             this.tableOfDetails = new System.Windows.Forms.TableLayoutPanel();
             this.windowStartDetail = new System.Windows.Forms.Label();
             this.launchNameLab = new System.Windows.Forms.Label();
@@ -67,8 +69,6 @@ namespace CrazyRL
             this.t0label = new System.Windows.Forms.Label();
             this.windowEndDetail = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.favouriteButton = new MetroFramework.Controls.MetroButton();
-            this.timeLeftLabel = new MetroFramework.Controls.MetroLabel();
             this.tabsControl.SuspendLayout();
             this.tabPageFav.SuspendLayout();
             this.tabPageAll.SuspendLayout();
@@ -254,10 +254,10 @@ namespace CrazyRL
             // 
             // detailsBox
             // 
+            this.detailsBox.Controls.Add(this.locationLink);
             this.detailsBox.Controls.Add(this.timeLeftLabel);
             this.detailsBox.Controls.Add(this.favouriteButton);
             this.detailsBox.Controls.Add(this.launchTimerLabel);
-            this.detailsBox.Controls.Add(this.showMapButton);
             this.detailsBox.Controls.Add(this.tableOfDetails);
             this.detailsBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.detailsBox.Location = new System.Drawing.Point(529, 63);
@@ -267,6 +267,36 @@ namespace CrazyRL
             this.detailsBox.TabStop = false;
             this.detailsBox.Text = "Launch Details";
             this.detailsBox.Visible = false;
+            // 
+            // locationLink
+            // 
+            this.locationLink.Location = new System.Drawing.Point(237, 400);
+            this.locationLink.Name = "locationLink";
+            this.locationLink.Size = new System.Drawing.Size(169, 23);
+            this.locationLink.TabIndex = 13;
+            this.locationLink.Text = "Go to launch location";
+            this.locationLink.Click += new System.EventHandler(this.locationLink_Click);
+            // 
+            // timeLeftLabel
+            // 
+            this.timeLeftLabel.AccessibleName = "";
+            this.timeLeftLabel.AutoSize = true;
+            this.timeLeftLabel.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.timeLeftLabel.Location = new System.Drawing.Point(234, 543);
+            this.timeLeftLabel.Name = "timeLeftLabel";
+            this.timeLeftLabel.Size = new System.Drawing.Size(103, 25);
+            this.timeLeftLabel.TabIndex = 12;
+            this.timeLeftLabel.Text = "__time_left__";
+            // 
+            // favouriteButton
+            // 
+            this.favouriteButton.AccessibleName = "";
+            this.favouriteButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.favouriteButton.Location = new System.Drawing.Point(37, 395);
+            this.favouriteButton.Name = "favouriteButton";
+            this.favouriteButton.Size = new System.Drawing.Size(190, 28);
+            this.favouriteButton.TabIndex = 11;
+            this.favouriteButton.Text = "favouriteText";
             // 
             // launchTimerLabel
             // 
@@ -278,17 +308,6 @@ namespace CrazyRL
             this.launchTimerLabel.Size = new System.Drawing.Size(121, 25);
             this.launchTimerLabel.TabIndex = 9;
             this.launchTimerLabel.Text = "Launch timer: ";
-            // 
-            // showMapButton
-            // 
-            this.showMapButton.AccessibleName = "";
-            this.showMapButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.showMapButton.Location = new System.Drawing.Point(234, 395);
-            this.showMapButton.Name = "showMapButton";
-            this.showMapButton.Size = new System.Drawing.Size(212, 28);
-            this.showMapButton.TabIndex = 10;
-            this.showMapButton.Text = "Show location on map";
-            this.showMapButton.Click += new System.EventHandler(this.showMapButton_Click);
             // 
             // tableOfDetails
             // 
@@ -465,27 +484,6 @@ namespace CrazyRL
             this.label2.TabIndex = 16;
             this.label2.Text = "max T-0 (window end)";
             // 
-            // favouriteButton
-            // 
-            this.favouriteButton.AccessibleName = "";
-            this.favouriteButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.favouriteButton.Location = new System.Drawing.Point(37, 395);
-            this.favouriteButton.Name = "favouriteButton";
-            this.favouriteButton.Size = new System.Drawing.Size(190, 28);
-            this.favouriteButton.TabIndex = 11;
-            this.favouriteButton.Text = "favouriteText";
-            // 
-            // timeLeftLabel
-            // 
-            this.timeLeftLabel.AccessibleName = "";
-            this.timeLeftLabel.AutoSize = true;
-            this.timeLeftLabel.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.timeLeftLabel.Location = new System.Drawing.Point(234, 543);
-            this.timeLeftLabel.Name = "timeLeftLabel";
-            this.timeLeftLabel.Size = new System.Drawing.Size(103, 25);
-            this.timeLeftLabel.TabIndex = 12;
-            this.timeLeftLabel.Text = "__time_left__";
-            // 
             // ViewController
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -548,7 +546,6 @@ namespace CrazyRL
         private System.Windows.Forms.Label t0label;
         private System.Windows.Forms.Label windowStartDetail;
         private System.Windows.Forms.Label label2;
-        private MetroFramework.Controls.MetroButton showMapButton;
         private System.Windows.Forms.ColumnHeader IdColumn;
         private System.Windows.Forms.ColumnHeader nameColumn;
         private System.Windows.Forms.ColumnHeader rocketColumn;
@@ -560,5 +557,6 @@ namespace CrazyRL
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private MetroFramework.Controls.MetroButton favouriteButton;
         private MetroFramework.Controls.MetroLabel timeLeftLabel;
+        private MetroFramework.Controls.MetroLink locationLink;
     }
 }

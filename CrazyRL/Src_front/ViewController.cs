@@ -22,6 +22,8 @@ namespace CrazyRL
         /// </summary>
         private APIParser api = new APIParser();
 
+        private Launch activeLaunch = null;
+
         /// <summary>
         /// Domyślny konstruktor.
         /// </summary>
@@ -228,18 +230,19 @@ namespace CrazyRL
                 {
 
                     ListViewItem item = selected[0];
-                    Launch launch = context.launches.Find(int.Parse(item.Text));
+                    activeLaunch = context.launches.Find(int.Parse(item.Text));
 
-                    launchNameDetail.Text           = launch.name;
-                    rocketFullLabelDetail.Text      = launch.rocketFullName;
-                    statusLabelDetail.Text          = launch.status;
-                    launchProviderLabelDetail.Text  = launch.launchProvider;
-                    launchPadLocDetail.Text         = launch.location;
-                    windowStartDetail.Text          = launch.windowStart.ToString();
-                    windowEndDetail.Text            = launch.windowEnd.ToString();
+                    launchNameDetail.Text = activeLaunch.name;
+                    rocketFullLabelDetail.Text = activeLaunch.rocketFullName;
+                    statusLabelDetail.Text = activeLaunch.status;
+                    launchProviderLabelDetail.Text = activeLaunch.launchProvider;
+                    launchPadLocDetail.Text = activeLaunch.location;
+                    windowStartDetail.Text = activeLaunch.windowStart.ToString();
+                    windowEndDetail.Text = activeLaunch.windowEnd.ToString();
                 }
-                
+
             }
+            else activeLaunch = null;
 
             this.ListCheckButtons();
         }
@@ -259,32 +262,16 @@ namespace CrazyRL
 
         /************************************************************************************************************************/
 
-        private void showMapButton_Click(object sender, EventArgs e)
-        {
-            showMapButton.Enabled = false;
-            string locationUrl;
-
-            using (var context = new LaunchContext())
-            {
-                ListViewItem item = allLaunchesList.SelectedItems[0];
-                Launch launch = context.launches.Find(int.Parse(item.Text));
-                locationUrl = launch.locationGoogleMapsUrl;
-            }
-
-            MapForm mapForm = new MapForm();
-            mapForm.url = locationUrl;
-            mapForm.ShowDialog();
-
-            showMapButton.Enabled = true;
-        }
-
-        /************************************************************************************************************************/
-
         private void tabsControl_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.ListCheckButtons();
         }
 
+        /************************************************************************************************************************/
 
+        private void locationLink_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start(activeLaunch.locationGoogleMapsUrl);
+        }
     }
 }
