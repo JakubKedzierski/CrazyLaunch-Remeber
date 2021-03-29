@@ -31,6 +31,11 @@ namespace CrazyRL
         {
             this.tabsControl = new MetroFramework.Controls.MetroTabControl();
             this.tabPageFav = new MetroFramework.Controls.MetroTabPage();
+            this.favLaunchesList = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabPageAll = new MetroFramework.Controls.MetroTabPage();
             this.allLaunchesList = new System.Windows.Forms.ListView();
             this.IdColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -64,6 +69,7 @@ namespace CrazyRL
             this.windowEndDetail = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tabsControl.SuspendLayout();
+            this.tabPageFav.SuspendLayout();
             this.tabPageAll.SuspendLayout();
             this.detailsBox.SuspendLayout();
             this.tableOfDetails.SuspendLayout();
@@ -80,9 +86,11 @@ namespace CrazyRL
             this.tabsControl.SelectedIndex = 1;
             this.tabsControl.Size = new System.Drawing.Size(500, 600);
             this.tabsControl.TabIndex = 0;
+            this.tabsControl.SelectedIndexChanged += new System.EventHandler(this.tabsControl_SelectedIndexChanged);
             // 
             // tabPageFav
             // 
+            this.tabPageFav.Controls.Add(this.favLaunchesList);
             this.tabPageFav.Cursor = System.Windows.Forms.Cursors.Default;
             this.tabPageFav.HorizontalScrollbarBarColor = true;
             this.tabPageFav.Location = new System.Drawing.Point(4, 38);
@@ -91,6 +99,40 @@ namespace CrazyRL
             this.tabPageFav.TabIndex = 0;
             this.tabPageFav.Text = "Favourite launches";
             this.tabPageFav.VerticalScrollbarBarColor = true;
+            // 
+            // favLaunchesList
+            // 
+            this.favLaunchesList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.favLaunchesList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3,
+            this.columnHeader4});
+            this.favLaunchesList.FullRowSelect = true;
+            this.favLaunchesList.GridLines = true;
+            this.favLaunchesList.HideSelection = false;
+            this.favLaunchesList.Location = new System.Drawing.Point(0, 3);
+            this.favLaunchesList.Name = "favLaunchesList";
+            this.favLaunchesList.Size = new System.Drawing.Size(492, 552);
+            this.favLaunchesList.TabIndex = 9;
+            this.favLaunchesList.UseCompatibleStateImageBehavior = false;
+            this.favLaunchesList.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Id";
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Name";
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Rocket";
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Window start time";
             // 
             // tabPageAll
             // 
@@ -453,6 +495,7 @@ namespace CrazyRL
             this.Load += new System.EventHandler(this.ViewController_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ViewController_KeyDown);
             this.tabsControl.ResumeLayout(false);
+            this.tabPageFav.ResumeLayout(false);
             this.tabPageAll.ResumeLayout(false);
             this.detailsBox.ResumeLayout(false);
             this.detailsBox.PerformLayout();
@@ -498,5 +541,10 @@ namespace CrazyRL
         private System.Windows.Forms.ColumnHeader nameColumn;
         private System.Windows.Forms.ColumnHeader rocketColumn;
         private System.Windows.Forms.ColumnHeader wStartTimeColumn;
+        private System.Windows.Forms.ListView favLaunchesList;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
     }
 }

@@ -23,7 +23,6 @@ namespace CrazyRL
         public String locationGoogleMapsUrl { get; set; }
 
         /************************************************************************************************************************/
-
         public override string ToString()
         {
             return "launch Id: " + LaunchId + "\nname: " + name + "\nstatus: " + status + "\nwindow starts: " + windowStart +

@@ -15,7 +15,6 @@ namespace CrazyRL
         /// <summary>
         /// Przeładowanie (odświerzenie) na nowo wierszy w liście.
         /// </summary>
-        /// <param name="listV">Lista do przeładowania</param>
         private void ListReload(ListView listV)
         {
             listV.Items.Clear();
@@ -39,30 +38,30 @@ namespace CrazyRL
         /// Aktywacja i dezaktywacja przycisków add oraz edit.
         /// </summary>
         /// <param name="listV">Lista, na podstawie której odświeżać przyciski</param>
-        private void ListCheckButtons(ListView listV)
+        private void ListCheckButtons()
         {
-            int nofItems = allLaunchesList.SelectedItems.Count;
+            int nofItems = -1;
+            if (tabsControl.SelectedIndex == 1) nofItems = allLaunchesList.SelectedItems.Count;
+            else nofItems = favLaunchesList.SelectedItems.Count;
 
-            if (nofItems < 1)
+            if (nofItems == 1)
+            {
+                removeButton.Enabled = true;
+                editButton.Enabled = true;
+                detailsBox.Visible = true;
+            }
+            else if(nofItems < 1)
             {
                 removeButton.Enabled = false;
                 editButton.Enabled = false;
-                detailsBox.Visible = true;
+                detailsBox.Visible = false;
             }
             else
             {
-                removeButton.Enabled = true;
-                if (nofItems > 1)
-                {
-                    editButton.Enabled = false;
-                    detailsBox.Visible = true;
-                }
-                else
-                {
-                    editButton.Enabled = true;
-                    detailsBox.Visible = true;
-                }
+                editButton.Enabled = false;
+                detailsBox.Visible = false;
             }
+            
         }
 
 

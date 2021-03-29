@@ -66,14 +66,27 @@ namespace CrazyRL
         /// <param name="e"></param>
         private void DialogForm_Load(object sender, EventArgs e)
         {
+            wStartTimePicker.CustomFormat = "dddd, dd MMM yyyy,   HH:mm";
+            wEndTimePicker.CustomFormat = "dddd, dd MMM yyyy,   HH:mm";
+
             nameTextBox.Text            = editedLaunch.name;
             statusTextBox.Text          = editedLaunch.status;
             rocketTextBox.Text          = editedLaunch.rocketFullName;
             launchProviderTextBox.Text  = editedLaunch.launchProvider;
             locationTextBox.Text        = editedLaunch.location;
             gmapsUrlTextBox.Text        = editedLaunch.locationGoogleMapsUrl;
-            wStartTimePicker.Value      = editedLaunch.windowStart;
-            wEndTimePicker.Value        = editedLaunch.windowEnd;
+
+            try // Na wypadek braku ustawionej daty
+            {
+                wStartTimePicker.Value = editedLaunch.windowStart;
+                wEndTimePicker.Value = editedLaunch.windowEnd;
+            }
+            catch
+            {
+                wStartTimePicker.Value = DateTime.Now;
+                wEndTimePicker.Value = DateTime.Now;
+            }
+            
         }
 
      

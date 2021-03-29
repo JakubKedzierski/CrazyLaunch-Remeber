@@ -176,6 +176,7 @@ namespace CrazyRL
             // 
             // wStartTimePicker
             // 
+            this.wStartTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.wStartTimePicker.Location = new System.Drawing.Point(23, 370);
             this.wStartTimePicker.MaxDate = new System.DateTime(2099, 12, 31, 0, 0, 0, 0);
             this.wStartTimePicker.MinDate = new System.DateTime(1940, 1, 1, 0, 0, 0, 0);
@@ -194,6 +195,7 @@ namespace CrazyRL
             // 
             // wEndTimePicker
             // 
+            this.wEndTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.wEndTimePicker.Location = new System.Drawing.Point(23, 415);
             this.wEndTimePicker.MaxDate = new System.DateTime(2099, 12, 31, 0, 0, 0, 0);
             this.wEndTimePicker.MinDate = new System.DateTime(1940, 1, 1, 0, 0, 0, 0);

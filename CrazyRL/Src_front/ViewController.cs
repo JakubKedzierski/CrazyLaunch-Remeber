@@ -169,7 +169,7 @@ namespace CrazyRL
                     context.SaveChanges();
                 }
                 this.ListReload(allLaunchesList);
-                this.ListCheckButtons(allLaunchesList);
+                this.ListCheckButtons();
             }
 
         }
@@ -240,7 +240,7 @@ namespace CrazyRL
                 
             }
 
-            this.ListCheckButtons(allLaunchesList);
+            this.ListCheckButtons();
         }
 
         /************************************************************************************************************************/
@@ -273,6 +273,11 @@ namespace CrazyRL
             mapForm.ShowDialog();
 
             showMapButton.Enabled = true;
+        }
+
+        private void tabsControl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.ListCheckButtons();
         }
     }
 }
