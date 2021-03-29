@@ -31,8 +31,17 @@ namespace CrazyRL
         {
             this.tabsControl = new MetroFramework.Controls.MetroTabControl();
             this.tabPageFav = new MetroFramework.Controls.MetroTabPage();
+            this.favLaunchesList = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabPageAll = new MetroFramework.Controls.MetroTabPage();
             this.allLaunchesList = new System.Windows.Forms.ListView();
+            this.IdColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.nameColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.rocketColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.wStartTimeColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.updateProgressBar = new MetroFramework.Controls.MetroProgressBar();
             this.updateFromWebButton = new MetroFramework.Controls.MetroButton();
             this.addButton = new MetroFramework.Controls.MetroButton();
@@ -41,6 +50,10 @@ namespace CrazyRL
             this.editButton = new MetroFramework.Controls.MetroButton();
             this.removeButton = new MetroFramework.Controls.MetroButton();
             this.detailsBox = new System.Windows.Forms.GroupBox();
+            this.favCheckBox = new MetroFramework.Controls.MetroCheckBox();
+            this.locationLink = new MetroFramework.Controls.MetroLink();
+            this.timeLeftLabel = new MetroFramework.Controls.MetroLabel();
+            this.launchTimerLabel = new MetroFramework.Controls.MetroLabel();
             this.tableOfDetails = new System.Windows.Forms.TableLayoutPanel();
             this.windowStartDetail = new System.Windows.Forms.Label();
             this.launchNameLab = new System.Windows.Forms.Label();
@@ -56,9 +69,8 @@ namespace CrazyRL
             this.t0label = new System.Windows.Forms.Label();
             this.windowEndDetail = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.launchTimerLabel = new MetroFramework.Controls.MetroLabel();
-            this.padLocationMap = new System.Windows.Forms.WebBrowser();
             this.tabsControl.SuspendLayout();
+            this.tabPageFav.SuspendLayout();
             this.tabPageAll.SuspendLayout();
             this.detailsBox.SuspendLayout();
             this.tableOfDetails.SuspendLayout();
@@ -75,9 +87,11 @@ namespace CrazyRL
             this.tabsControl.SelectedIndex = 1;
             this.tabsControl.Size = new System.Drawing.Size(500, 600);
             this.tabsControl.TabIndex = 0;
+            this.tabsControl.SelectedIndexChanged += new System.EventHandler(this.tabsControl_SelectedIndexChanged);
             // 
             // tabPageFav
             // 
+            this.tabPageFav.Controls.Add(this.favLaunchesList);
             this.tabPageFav.Cursor = System.Windows.Forms.Cursors.Default;
             this.tabPageFav.HorizontalScrollbarBarColor = true;
             this.tabPageFav.Location = new System.Drawing.Point(4, 38);
@@ -86,6 +100,41 @@ namespace CrazyRL
             this.tabPageFav.TabIndex = 0;
             this.tabPageFav.Text = "Favourite launches";
             this.tabPageFav.VerticalScrollbarBarColor = true;
+            // 
+            // favLaunchesList
+            // 
+            this.favLaunchesList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.favLaunchesList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3,
+            this.columnHeader4});
+            this.favLaunchesList.FullRowSelect = true;
+            this.favLaunchesList.GridLines = true;
+            this.favLaunchesList.HideSelection = false;
+            this.favLaunchesList.Location = new System.Drawing.Point(0, 3);
+            this.favLaunchesList.Name = "favLaunchesList";
+            this.favLaunchesList.Size = new System.Drawing.Size(492, 552);
+            this.favLaunchesList.TabIndex = 9;
+            this.favLaunchesList.UseCompatibleStateImageBehavior = false;
+            this.favLaunchesList.View = System.Windows.Forms.View.Details;
+            this.favLaunchesList.SelectedIndexChanged += new System.EventHandler(this.favLaunchesList_SelectedIndexChanged);
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Id";
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Name";
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Rocket";
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Window start time";
             // 
             // tabPageAll
             // 
@@ -102,13 +151,38 @@ namespace CrazyRL
             // allLaunchesList
             // 
             this.allLaunchesList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.allLaunchesList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.IdColumn,
+            this.nameColumn,
+            this.rocketColumn,
+            this.wStartTimeColumn});
+            this.allLaunchesList.FullRowSelect = true;
+            this.allLaunchesList.GridLines = true;
             this.allLaunchesList.HideSelection = false;
             this.allLaunchesList.Location = new System.Drawing.Point(0, 3);
             this.allLaunchesList.Name = "allLaunchesList";
             this.allLaunchesList.Size = new System.Drawing.Size(492, 552);
+            this.allLaunchesList.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.allLaunchesList.TabIndex = 2;
             this.allLaunchesList.UseCompatibleStateImageBehavior = false;
+            this.allLaunchesList.View = System.Windows.Forms.View.Details;
             this.allLaunchesList.SelectedIndexChanged += new System.EventHandler(this.allLaunchesList_SelectedIndexChanged);
+            // 
+            // IdColumn
+            // 
+            this.IdColumn.Text = "Id";
+            // 
+            // nameColumn
+            // 
+            this.nameColumn.Text = "Name";
+            // 
+            // rocketColumn
+            // 
+            this.rocketColumn.Text = "Rocket";
+            // 
+            // wStartTimeColumn
+            // 
+            this.wStartTimeColumn.Text = "Window start time";
             // 
             // updateProgressBar
             // 
@@ -181,7 +255,10 @@ namespace CrazyRL
             // 
             // detailsBox
             // 
-            this.detailsBox.Controls.Add(this.padLocationMap);
+            this.detailsBox.Controls.Add(this.favCheckBox);
+            this.detailsBox.Controls.Add(this.locationLink);
+            this.detailsBox.Controls.Add(this.timeLeftLabel);
+            this.detailsBox.Controls.Add(this.launchTimerLabel);
             this.detailsBox.Controls.Add(this.tableOfDetails);
             this.detailsBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.detailsBox.Location = new System.Drawing.Point(529, 63);
@@ -190,9 +267,53 @@ namespace CrazyRL
             this.detailsBox.TabIndex = 8;
             this.detailsBox.TabStop = false;
             this.detailsBox.Text = "Launch Details";
+            this.detailsBox.Visible = false;
+            // 
+            // favCheckBox
+            // 
+            this.favCheckBox.AutoSize = true;
+            this.favCheckBox.Location = new System.Drawing.Point(44, 400);
+            this.favCheckBox.Name = "favCheckBox";
+            this.favCheckBox.Size = new System.Drawing.Size(72, 15);
+            this.favCheckBox.TabIndex = 14;
+            this.favCheckBox.Text = "Favourite";
+            this.favCheckBox.UseVisualStyleBackColor = true;
+            this.favCheckBox.Click += new System.EventHandler(this.favCheckBox_Click);
+            // 
+            // locationLink
+            // 
+            this.locationLink.Location = new System.Drawing.Point(237, 400);
+            this.locationLink.Name = "locationLink";
+            this.locationLink.Size = new System.Drawing.Size(169, 15);
+            this.locationLink.TabIndex = 13;
+            this.locationLink.Text = "Go to launch location";
+            this.locationLink.Click += new System.EventHandler(this.locationLink_Click);
+            // 
+            // timeLeftLabel
+            // 
+            this.timeLeftLabel.AccessibleName = "";
+            this.timeLeftLabel.AutoSize = true;
+            this.timeLeftLabel.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.timeLeftLabel.Location = new System.Drawing.Point(237, 543);
+            this.timeLeftLabel.Name = "timeLeftLabel";
+            this.timeLeftLabel.Size = new System.Drawing.Size(103, 25);
+            this.timeLeftLabel.TabIndex = 12;
+            this.timeLeftLabel.Text = "__time_left__";
+            // 
+            // launchTimerLabel
+            // 
+            this.launchTimerLabel.AccessibleName = "";
+            this.launchTimerLabel.AutoSize = true;
+            this.launchTimerLabel.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.launchTimerLabel.Location = new System.Drawing.Point(37, 543);
+            this.launchTimerLabel.Name = "launchTimerLabel";
+            this.launchTimerLabel.Size = new System.Drawing.Size(121, 25);
+            this.launchTimerLabel.TabIndex = 9;
+            this.launchTimerLabel.Text = "Launch timer: ";
             // 
             // tableOfDetails
             // 
+            this.tableOfDetails.AccessibleName = "";
             this.tableOfDetails.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableOfDetails.ColumnCount = 2;
             this.tableOfDetails.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 47.5F));
@@ -224,7 +345,6 @@ namespace CrazyRL
             this.tableOfDetails.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableOfDetails.Size = new System.Drawing.Size(409, 330);
             this.tableOfDetails.TabIndex = 0;
-            this.tableOfDetails.Visible = false;
             // 
             // windowStartDetail
             // 
@@ -366,33 +486,11 @@ namespace CrazyRL
             this.label2.TabIndex = 16;
             this.label2.Text = "max T-0 (window end)";
             // 
-            // launchTimerLabel
-            // 
-            this.launchTimerLabel.AutoSize = true;
-            this.launchTimerLabel.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.launchTimerLabel.Location = new System.Drawing.Point(566, 701);
-            this.launchTimerLabel.Name = "launchTimerLabel";
-            this.launchTimerLabel.Size = new System.Drawing.Size(121, 25);
-            this.launchTimerLabel.TabIndex = 9;
-            this.launchTimerLabel.Text = "Launch timer: ";
-            // 
-            // padLocationMap
-            // 
-            this.padLocationMap.Location = new System.Drawing.Point(44, 414);
-            this.padLocationMap.MinimumSize = new System.Drawing.Size(20, 20);
-            this.padLocationMap.Name = "padLocationMap";
-            this.padLocationMap.ScriptErrorsSuppressed = true;
-            this.padLocationMap.Size = new System.Drawing.Size(402, 161);
-            this.padLocationMap.TabIndex = 1;
-            this.padLocationMap.Url = new System.Uri("http://www.google.com", System.UriKind.Absolute);
-            this.padLocationMap.Visible = false;
-            // 
             // ViewController
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1024, 768);
-            this.Controls.Add(this.launchTimerLabel);
             this.Controls.Add(this.detailsBox);
             this.Controls.Add(this.removeButton);
             this.Controls.Add(this.editButton);
@@ -410,12 +508,13 @@ namespace CrazyRL
             this.Load += new System.EventHandler(this.ViewController_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ViewController_KeyDown);
             this.tabsControl.ResumeLayout(false);
+            this.tabPageFav.ResumeLayout(false);
             this.tabPageAll.ResumeLayout(false);
             this.detailsBox.ResumeLayout(false);
+            this.detailsBox.PerformLayout();
             this.tableOfDetails.ResumeLayout(false);
             this.tableOfDetails.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -449,6 +548,17 @@ namespace CrazyRL
         private System.Windows.Forms.Label t0label;
         private System.Windows.Forms.Label windowStartDetail;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.WebBrowser padLocationMap;
+        private System.Windows.Forms.ColumnHeader IdColumn;
+        private System.Windows.Forms.ColumnHeader nameColumn;
+        private System.Windows.Forms.ColumnHeader rocketColumn;
+        private System.Windows.Forms.ColumnHeader wStartTimeColumn;
+        private System.Windows.Forms.ListView favLaunchesList;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
+        private MetroFramework.Controls.MetroLabel timeLeftLabel;
+        private MetroFramework.Controls.MetroLink locationLink;
+        private MetroFramework.Controls.MetroCheckBox favCheckBox;
     }
 }

@@ -32,6 +32,12 @@ namespace CrazyRL
         /// <param name="e"></param>
         private void okButton_Click(object sender, EventArgs e)
         {
+            if(string.IsNullOrWhiteSpace(nameTextBox.Text))
+            {
+                MessageBox.Show("Name not filled", "Saving launch error", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                return;
+            }
+
             editedLaunch.name                   = nameTextBox.Text;
             editedLaunch.status                 = statusTextBox.Text;
             editedLaunch.rocketFullName         = rocketTextBox.Text;
@@ -39,7 +45,10 @@ namespace CrazyRL
             editedLaunch.location               = locationTextBox.Text;
             editedLaunch.locationGoogleMapsUrl  = gmapsUrlTextBox.Text;
             editedLaunch.windowStart            = wStartTimePicker.Value;
-            editedLaunch.windowEnd              = wEndTimePicker.Value;
+
+            if (endCheckBox.Checked)
+                editedLaunch.windowEnd          = wStartTimePicker.Value;
+            else editedLaunch.windowEnd         = wEndTimePicker.Value;
 
             this.DialogResult = DialogResult.OK;
             Close();
@@ -66,14 +75,35 @@ namespace CrazyRL
         /// <param name="e"></param>
         private void DialogForm_Load(object sender, EventArgs e)
         {
-            nameTextBox.Text        = editedLaunch.name;
-            statusTextBox.Text      = editedLaunch.status;
-            rocketTextBox.Text      = editedLaunch.rocketFullName;
-            launchProviderTextBox.Text = editedLaunch.launchProvider;
-            locationTextBox.Text    = editedLaunch.location;
-            gmapsUrlTextBox.Text    = editedLaunch.locationGoogleMapsUrl;
+            wStartTimePicker.CustomFormat = "dddd, dd MMM yyyy,   HH:mm";
+            wEndTimePicker.CustomFormat = "dddd, dd MMM yyyy,   HH:mm";
+
+            nameTextBox.Text            = editedLaunch.name;
+            statusTextBox.Text          = editedLaunch.status;
+            rocketTextBox.Text          = editedLaunch.rocketFullName;
+            launchProviderTextBox.Text  = editedLaunch.launchProvider;
+            locationTextBox.Text        = editedLaunch.location;
+            gmapsUrlTextBox.Text        = editedLaunch.locationGoogleMapsUrl;
+
+            try // Na wypadek braku ustawionej daty
+            {
+                wStartTimePicker.Value = editedLaunch.windowStart;
+                wEndTimePicker.Value = editedLaunch.windowEnd;
+            }
+            catch
+            {
+                wStartTimePicker.Value = DateTime.Now;
+                wEndTimePicker.Value = DateTime.Now;
+            }
+            
         }
 
-     
+        /************************************************************************************************************************/
+
+        private void endCheckBox_Click(object sender, EventArgs e)
+        {
+            if (endCheckBox.Checked) wEndTimePicker.Enabled = false;
+            else wEndTimePicker.Enabled = true;
+        }
     }
 }

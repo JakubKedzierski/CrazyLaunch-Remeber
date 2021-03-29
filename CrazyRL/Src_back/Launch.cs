@@ -21,9 +21,9 @@ namespace CrazyRL
         public String rocketFullName { get; set; }
         public String location { get; set; }
         public String locationGoogleMapsUrl { get; set; }
+        public bool favourite { get; set; }
 
         /************************************************************************************************************************/
-
         public override string ToString()
         {
             return "launch Id: " + LaunchId + "\nname: " + name + "\nstatus: " + status + "\nwindow starts: " + windowStart +
@@ -89,5 +89,26 @@ namespace CrazyRL
         {
             get { return new string[] { this.LaunchId.ToString(), this.name, this.rocketFullName, this.windowStart.ToString() }; }
         }
+
+        /************************************************************************************************************************/
+
+        /// <summary>
+        /// Metoda służąca do przepisania zawartości jednego startu do drugiego.
+        /// </summary>
+        /// <param name="launch"></param>
+        public void getData(Launch launch)
+        {
+            LaunchId                = launch.LaunchId;
+            name                    = launch.name;
+            windowStart             = launch.windowStart;
+            windowEnd               = launch.windowEnd;
+            launchProvider          = launch.launchProvider;
+            rocketFullName          = launch.rocketFullName;
+            location                = launch.location;
+            locationGoogleMapsUrl   = launch.locationGoogleMapsUrl;
+            favourite               = launch.favourite;
+        }
+
+
     }
 }
