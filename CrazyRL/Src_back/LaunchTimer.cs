@@ -10,6 +10,7 @@ namespace CrazyRL
 {
     partial class ViewController
     {
+        private List<Launch> alreadyNotyfied = new List<Launch>(); 
 
         public void StartTimer()
         {
@@ -66,10 +67,12 @@ namespace CrazyRL
                         {
                             timeToStart = DateTime.Now.Subtract(launch.windowStart).Minutes;
                             
-                            if (timeToStart <= 15 )
+                            if (timeToStart <= 15 && !alreadyNotyfied.Contains(launch))
                             {
                                 notify = true;
+                                alreadyNotyfied.Add(launch);
                                 msg = launch.name;
+                                break;
                             }
                         }
 
