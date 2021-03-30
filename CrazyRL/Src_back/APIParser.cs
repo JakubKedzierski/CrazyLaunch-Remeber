@@ -20,9 +20,10 @@ namespace CrazyRL
     /// </summary>
     public class APIParser
     {
-        private const string URL = "https://lldev.thespacedevs.com/2.0.0/launch";
-        private const string URLparametr = "?format=json";
+        private const string URL = "https://lldev.thespacedevs.com/2.0.0/launch/";
+        private const string URLparametr = "?&net__gt=2021-03-30&net__lt=2021-12-29&limit=30";
 
+   
         private string APIresponse = null;
 
 
@@ -119,7 +120,12 @@ namespace CrazyRL
                     launch.rocketFullName = nestedLaunchInfo["full_name"].ToString();
 
                     JsonObject padInfo = (JsonObject)launchData["pad"];
-                    launch.locationGoogleMapsUrl = padInfo["map_url"].ToString();
+                    if (padInfo["map_url"] != null)
+                    {
+                        String mapInfo = (String)padInfo["map_url"];
+                        launch.locationGoogleMapsUrl = mapInfo.ToString();
+                    }
+
 
                     padInfo = (JsonObject)padInfo["location"];
                     launch.location = padInfo["name"].ToString();

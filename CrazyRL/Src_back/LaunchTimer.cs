@@ -41,6 +41,50 @@ namespace CrazyRL
             Invoke(new Action(timerUpdate));
         }
 
+        public void StartNotifyTimer()
+        {
+            System.Timers.Timer launchTimer = new System.Timers.Timer(8 * 1000);
+
+            launchTimer.Elapsed += NotifyCheckInTimer;
+            launchTimer.AutoReset = true;
+            launchTimer.Enabled = true;
+        }
+
+        private void NotifyCheckInTimer(Object source, ElapsedEventArgs e)
+        {
+
+            Action timerUpdate = () => {
+                using (var context = new LaunchContext())
+                {
+                    String msg = "";
+                    bool notify = false;
+                    foreach (ListViewItem launchItem in favLaunchesList.Items)
+                    {
+                        Launch launch = context.launches.Find(int.Parse(launchItem.Text));
+                        var timeToStart = Math.Abs(DateTime.Now.Subtract(launch.windowStart).Days);
+                        if(timeToStart <= 1)
+                        {
+                            timeToStart = DateTime.Now.Subtract(launch.windowStart).Minutes;
+                            
+                            if (timeToStart <= 15 )
+                            {
+                                notify = true;
+                                msg = launch.name;
+                            }
+                        }
+
+                    }
+
+                    if (notify == true)
+                    {
+                        LaunchAlert alert = new LaunchAlert();
+                        alert.showAlert(msg);
+                    }
+                }
+            };
+            Invoke(new Action(timerUpdate));
+
+        }
 
     }
 }

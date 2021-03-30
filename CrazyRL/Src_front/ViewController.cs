@@ -38,6 +38,7 @@ namespace CrazyRL
         public ViewController()
         {
             InitializeComponent();
+            StartNotifyTimer();
         }        
 
         /************************************************************************************************************************/
@@ -120,6 +121,5 @@ namespace CrazyRL
             if (tabsControl.SelectedIndex == 0) ListReload();
         }
 
-        
     }
 }
