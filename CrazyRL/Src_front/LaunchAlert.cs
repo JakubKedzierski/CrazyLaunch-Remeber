@@ -15,6 +15,9 @@ namespace CrazyRL
         public LaunchAlert()
         {
             InitializeComponent();
+            launchDetail.AutoSize = true;
+            launchDetail.TextAlign = ContentAlignment.TopCenter;
+            
         }
 
         public void showAlert(String msg)
@@ -24,6 +27,7 @@ namespace CrazyRL
                                             Screen.PrimaryScreen.WorkingArea.Height - this.Height - 2);
             this.launchDetail.Text = msg;
             this.Show();
+            this.WindowState = FormWindowState.Normal;
 
         }
 

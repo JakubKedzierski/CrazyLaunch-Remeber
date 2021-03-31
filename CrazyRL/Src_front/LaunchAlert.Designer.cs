@@ -63,7 +63,7 @@
             this.launchwindtext.AutoSize = true;
             this.launchwindtext.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.launchwindtext.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.launchwindtext.Location = new System.Drawing.Point(51, 82);
+            this.launchwindtext.Location = new System.Drawing.Point(38, 83);
             this.launchwindtext.Name = "launchwindtext";
             this.launchwindtext.Size = new System.Drawing.Size(318, 21);
             this.launchwindtext.TabIndex = 3;
@@ -74,10 +74,13 @@
             this.launchDetail.AutoSize = true;
             this.launchDetail.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.launchDetail.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.launchDetail.Location = new System.Drawing.Point(70, 48);
+            this.launchDetail.Location = new System.Drawing.Point(47, 42);
+            this.launchDetail.MinimumSize = new System.Drawing.Size(300, 30);
             this.launchDetail.Name = "launchDetail";
-            this.launchDetail.Size = new System.Drawing.Size(0, 21);
+            this.launchDetail.Size = new System.Drawing.Size(300, 30);
             this.launchDetail.TabIndex = 4;
+            this.launchDetail.Text = "                     ";
+            this.launchDetail.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // LaunchAlert
             // 
@@ -92,6 +95,8 @@
             this.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "LaunchAlert";
             this.Text = "LaunchAlert";
             this.ResumeLayout(false);
@@ -105,5 +110,6 @@
         private System.Windows.Forms.Button closeButton;
         private System.Windows.Forms.Label launchwindtext;
         private System.Windows.Forms.Label launchDetail;
+     
     }
 }
