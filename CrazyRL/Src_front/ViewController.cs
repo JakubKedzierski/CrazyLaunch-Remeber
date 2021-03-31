@@ -50,9 +50,13 @@ namespace CrazyRL
         /// <param name="e"></param>
         private void ViewController_Load(object sender, EventArgs e)
         {
+            activeList = favLaunchesList;
+            ListReload();
             activeList = allLaunchesList;
             ListReload();
             StartTimer();
+
+
         }
 
         /************************************************************************************************************************/
@@ -115,8 +119,9 @@ namespace CrazyRL
             {
                 Launch launch = context.launches.Find(activeLaunch.LaunchId);
                 launch.favourite = !launch.favourite;
-
                 context.SaveChanges();
+                favLaunchesList.Items.Add(new ListViewItem(launch.ShortData));
+                
             }
             if (tabsControl.SelectedIndex == 0) ListReload();
         }

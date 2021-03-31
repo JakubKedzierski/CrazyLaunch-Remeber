@@ -28,6 +28,7 @@ namespace CrazyRL
                 {
                     if (favOnly && !launch.favourite) continue;
                     activeList.Items.Add(new ListViewItem(launch.ShortData));
+
                 }
             }
 
