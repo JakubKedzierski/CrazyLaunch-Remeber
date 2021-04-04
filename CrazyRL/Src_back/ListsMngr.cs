@@ -44,7 +44,6 @@ namespace CrazyRL
         /// <summary>
         /// Aktywacja i dezaktywacja przycisków add oraz edit.
         /// </summary>
-        /// <param name="listV">Lista, na podstawie której odświeżać przyciski</param>
         private void ListCheckButtons()
         {
             int nofItems = activeList.SelectedItems.Count;
@@ -71,6 +70,9 @@ namespace CrazyRL
 
         /************************************************************************************************************************/
 
+        /// <summary>
+        /// Metoda pokazująca szczegóły startu zaznaczonego na aktywnej liście.
+        /// </summary>
         private void ShowSelecterLaunchDetails()
         {
             var selected = activeList.SelectedItems;

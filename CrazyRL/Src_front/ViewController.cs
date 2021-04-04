@@ -55,8 +55,6 @@ namespace CrazyRL
             activeList = allLaunchesList;
             ListReload();
             StartTimer();
-
-
         }
 
         /************************************************************************************************************************/
@@ -64,6 +62,11 @@ namespace CrazyRL
         /************************************************************************************************************************/
         /* LISTY I ZAKŁADKI: */
 
+        /// <summary>
+        /// Metoda obsługująca przerwanie po zmianie karty z listami (pomiędzy listą wszystkich lotów, a listą ulubionych).
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tabsControl_SelectedIndexChanged(object sender, EventArgs e)
         {
             activeList = tabsControl.SelectedIndex == 1 ? allLaunchesList : favLaunchesList;
@@ -73,7 +76,7 @@ namespace CrazyRL
         /************************************************************************************************************************/
 
         /// <summary>
-        /// Przerwanie związane z aktualizacją listy dostępnych przycisków i wyświetleniem szczegółów
+        /// Przerwanie związane z aktualizacją zaznaczonych lotów na liście wszystkich lotów.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -85,6 +88,11 @@ namespace CrazyRL
 
         /************************************************************************************************************************/
 
+        /// <summary>
+        /// Przerwanie związane z aktualizacją zaznaczonych lotów na liście ulubionych lotów.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void favLaunchesList_SelectedIndexChanged(object sender, EventArgs e)
         {
             ShowSelecterLaunchDetails();
@@ -109,10 +117,20 @@ namespace CrazyRL
 
         /************************************************************************************************************************/
 
+        /// <summary>
+        /// Krótka metoda odpowiadająca za przekierowanie na stronę internetową po kliknięciu linku.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void locationLink_Click(object sender, EventArgs e) => System.Diagnostics.Process.Start(activeLaunch.locationGoogleMapsUrl);
 
         /************************************************************************************************************************/
 
+        /// <summary>
+        /// Metoda odpowiedzialna za dodawanie startu do ulubionych lub usuwanie go stamtąd.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void favCheckBox_Click(object sender, EventArgs e)
         {
             using (var context = new LaunchContext())

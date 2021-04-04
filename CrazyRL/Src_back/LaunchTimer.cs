@@ -8,10 +8,23 @@ using System.Windows.Forms;
 
 namespace CrazyRL
 {
+
+    /// <summary>
+    /// Fragment klasy ViewController odpowiedzialny za obsługę timerów programowych.
+    /// </summary>
     partial class ViewController
     {
-        private List<Launch> alreadyNotyfied = new List<Launch>(); 
 
+        /// <summary>
+        /// Lista startów, o których powiadomienie już zostało pokazane.
+        /// </summary>
+        private List<Launch> alreadyNotyfied = new List<Launch>();
+
+        /************************************************************************************************************************/
+
+        /// <summary>
+        /// Włączenie timera odświeżającego odliczanie czasu do startu.
+        /// </summary>
         public void StartTimer()
         {
             System.Timers.Timer launchTimer = new System.Timers.Timer(250);
@@ -20,6 +33,14 @@ namespace CrazyRL
             launchTimer.AutoReset = true;
             launchTimer.Enabled = true;
         }
+
+        /************************************************************************************************************************/
+
+        /// <summary>
+        /// Przerwanie pochodzące od timera. Celem jego jest aktualizacja czasu pozostałego do startu, dla startu, którego szczegóły są aktualnie wyświetlone.
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="e"></param>
         private void OnTimedEvent(Object source, ElapsedEventArgs e)
         {
             string newLabel;
@@ -42,6 +63,11 @@ namespace CrazyRL
             Invoke(new Action(timerUpdate));
         }
 
+        /************************************************************************************************************************/
+
+        /// <summary>
+        /// Włączenie timera wyświetlającego powiadomienia o ulubionych startach.
+        /// </summary>
         public void StartNotifyTimer()
         {
             System.Timers.Timer launchTimer = new System.Timers.Timer(8 * 1000);
@@ -51,6 +77,14 @@ namespace CrazyRL
             launchTimer.Enabled = true;
         }
 
+        /************************************************************************************************************************/
+
+        /// <summary>
+        /// Przerwanie pochodzące od timera. Celem jego jest wyświetlenie powiadomienia o ulubionych startach,
+        /// do których pozostało mniej niż 15 minut.
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="e"></param>
         private void NotifyCheckInTimer(Object source, ElapsedEventArgs e)
         {
 

@@ -45,8 +45,6 @@ namespace CrazyRL
             this.updateProgressBar = new MetroFramework.Controls.MetroProgressBar();
             this.updateFromWebButton = new MetroFramework.Controls.MetroButton();
             this.addButton = new MetroFramework.Controls.MetroButton();
-            this.exportButton = new MetroFramework.Controls.MetroButton();
-            this.importButton = new MetroFramework.Controls.MetroButton();
             this.editButton = new MetroFramework.Controls.MetroButton();
             this.removeButton = new MetroFramework.Controls.MetroButton();
             this.detailsBox = new System.Windows.Forms.GroupBox();
@@ -210,26 +208,6 @@ namespace CrazyRL
             this.addButton.TabIndex = 3;
             this.addButton.Text = "Add launch";
             this.addButton.Click += new System.EventHandler(this.addButton_Click);
-            // 
-            // exportButton
-            // 
-            this.exportButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.exportButton.Location = new System.Drawing.Point(27, 732);
-            this.exportButton.Name = "exportButton";
-            this.exportButton.Size = new System.Drawing.Size(120, 28);
-            this.exportButton.TabIndex = 4;
-            this.exportButton.Text = "Export";
-            this.exportButton.Click += new System.EventHandler(this.exportButton_Click);
-            // 
-            // importButton
-            // 
-            this.importButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.importButton.Location = new System.Drawing.Point(153, 732);
-            this.importButton.Name = "importButton";
-            this.importButton.Size = new System.Drawing.Size(120, 28);
-            this.importButton.TabIndex = 5;
-            this.importButton.Text = "Import";
-            this.importButton.Click += new System.EventHandler(this.importButton_Click);
             // 
             // editButton
             // 
@@ -494,8 +472,6 @@ namespace CrazyRL
             this.Controls.Add(this.detailsBox);
             this.Controls.Add(this.removeButton);
             this.Controls.Add(this.editButton);
-            this.Controls.Add(this.importButton);
-            this.Controls.Add(this.exportButton);
             this.Controls.Add(this.addButton);
             this.Controls.Add(this.updateFromWebButton);
             this.Controls.Add(this.updateProgressBar);
@@ -526,8 +502,6 @@ namespace CrazyRL
         private MetroFramework.Controls.MetroProgressBar updateProgressBar;
         private MetroFramework.Controls.MetroButton updateFromWebButton;
         private MetroFramework.Controls.MetroButton addButton;
-        private MetroFramework.Controls.MetroButton exportButton;
-        private MetroFramework.Controls.MetroButton importButton;
         private MetroFramework.Controls.MetroButton editButton;
         private MetroFramework.Controls.MetroButton removeButton;
         private System.Windows.Forms.GroupBox detailsBox;

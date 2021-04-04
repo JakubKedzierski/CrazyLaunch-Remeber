@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace CrazyRL
 {   
     /// <summary>
-    /// Domain class representing rocket launch.
+    /// Klasa reprezentująca każdy pojedynczy start.
     /// </summary>
     public class Launch
     {
