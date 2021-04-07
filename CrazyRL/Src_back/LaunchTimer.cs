@@ -70,7 +70,7 @@ namespace CrazyRL
         /// </summary>
         public void StartNotifyTimer()
         {
-            System.Timers.Timer launchTimer = new System.Timers.Timer(8 * 1000);
+            System.Timers.Timer launchTimer = new System.Timers.Timer(60 * 1000);
 
             launchTimer.Elapsed += NotifyCheckInTimer;
             launchTimer.AutoReset = true;
