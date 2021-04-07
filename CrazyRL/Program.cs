@@ -10,7 +10,7 @@ namespace CrazyRL
     static class Program
     {
         /// <summary>
-        /// Funkcja main
+        /// Funkcja main programu. Odpowiedzialna jedynie za uruchomienie okna programu.
         /// </summary>
         [STAThread]
         static void Main()

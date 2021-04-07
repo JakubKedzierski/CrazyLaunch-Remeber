@@ -138,30 +138,6 @@ namespace CrazyRL
             this.ListReload();
         }
 
-        /************************************************************************************************************************/
-
-        /// <summary>
-        /// Obsługa przerwania po kliknięciu przycisku "Export" - eksport danych do pliku.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void exportButton_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        /************************************************************************************************************************/
-
-        /// <summary>
-        /// Obsługa przerwania po kliknięciu przycisku "Import" - import danych z pliku do bazy, aktualizacja listy.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void importButton_Click(object sender, EventArgs e)
-        {
-
-        }
-
 
     }
 }

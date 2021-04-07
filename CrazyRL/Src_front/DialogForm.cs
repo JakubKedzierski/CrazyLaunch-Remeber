@@ -10,9 +10,16 @@ using System.Windows.Forms;
 
 namespace CrazyRL
 {
+
+    /// <summary>
+    /// Klasa opisująca okno dialogowe do edycji oraz wprowadzania danych o nowym starcie.
+    /// </summary>
     public partial class DialogForm : MetroFramework.Forms.MetroForm
     {
 
+        /// <summary>
+        /// Aktualnie edytowany lub dodawany lot.
+        /// </summary>
         public Launch editedLaunch = new Launch();
 
         /// <summary>
@@ -61,10 +68,7 @@ namespace CrazyRL
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void cancelButton_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
+        private void cancelButton_Click(object sender, EventArgs e) => Close();
 
         /************************************************************************************************************************/
 
@@ -100,6 +104,11 @@ namespace CrazyRL
 
         /************************************************************************************************************************/
 
+        /// <summary>
+        /// Metoda obsługująca przerwanie po pliknięciu checkBoxa odpowiedzialnego za ustawianie czy data końca okna startowego ma być równa dacie początku.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void endCheckBox_Click(object sender, EventArgs e)
         {
             if (endCheckBox.Checked) wEndTimePicker.Enabled = false;
