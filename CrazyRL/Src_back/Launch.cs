@@ -96,7 +96,7 @@ namespace CrazyRL
         /// Metoda służąca do przepisania zawartości jednego startu do drugiego.
         /// </summary>
         /// <param name="launch"></param>
-        public void getData(Launch launch)
+        public void Clone(Launch launch)
         {
             LaunchId                = launch.LaunchId;
             name                    = launch.name;

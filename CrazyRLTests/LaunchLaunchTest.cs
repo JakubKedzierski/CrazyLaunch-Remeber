@@ -31,5 +31,26 @@ namespace CrazyRL.Tests
             Assert.IsFalse(launchFirst.Equals(launchSecond));
             Assert.AreNotEqual(launchFirst, launchSecond);
         }
+
+        [TestMethod()]
+        public void CloneTest()
+        {
+            Launch launch = new Launch();
+
+            launch.LaunchId = -1;
+            launch.name = "A";
+            launch.windowStart = DateTime.Now;
+            launch.windowEnd = DateTime.Now;
+            launch.launchProvider = "B";
+            launch.rocketFullName = "C";
+            launch.location = "D";
+            launch.locationGoogleMapsUrl = "E";
+            launch.favourite = false;
+
+            Launch clonedLaunch = new Launch();
+            clonedLaunch.Clone(launch);
+
+            if(launch != clonedLaunch) Assert.Fail();
+        }
     }
 }

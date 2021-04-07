@@ -102,12 +102,12 @@ namespace CrazyRL
             using (var context = new LaunchContext())
             {
                 Launch launch = context.launches.Find(activeLaunch.LaunchId);
-                launch.getData(activeLaunch);
+                launch.Clone(activeLaunch);
 
                 context.SaveChanges();
             }
 
-            this.ListReload();
+            ListReload();
         }
 
         /************************************************************************************************************************/
