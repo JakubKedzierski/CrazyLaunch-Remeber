@@ -96,21 +96,29 @@ namespace CrazyRL
                     foreach (ListViewItem launchItem in favLaunchesList.Items)
                     {
                         Launch launch = context.launches.Find(int.Parse(launchItem.Text));
-                        var timeToStart = DateTime.Now.Subtract(launch.windowStart).Days;
-                        if(timeToStart >= -1 && timeToStart < 1)
+                        try
                         {
-                            timeToStart = DateTime.Now.Subtract(launch.windowStart).Minutes;
-                            
-                            if (timeToStart >= -15 && !alreadyNotyfied.Contains(launch))
+                            var timeToStart = DateTime.Now.Subtract(launch.windowStart).Days;
+
+                            if (timeToStart >= -1 && timeToStart < 1)
                             {
-                                if (timeToStart <= 0)
+                                timeToStart = DateTime.Now.Subtract(launch.windowStart).Minutes;
+
+                                if (timeToStart >= -15 && !alreadyNotyfied.Contains(launch))
                                 {
-                                    notify = true;
-                                    alreadyNotyfied.Add(launch);
-                                    msg = launch.name;
-                                    break;
+                                    if (timeToStart <= 0)
+                                    {
+                                        notify = true;
+                                        alreadyNotyfied.Add(launch);
+                                        msg = launch.name;
+                                        break;
+                                    }
                                 }
                             }
+                        }
+                        catch
+                        {
+                            return;
                         }
 
                     }
