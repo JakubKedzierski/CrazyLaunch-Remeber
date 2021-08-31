@@ -11,7 +11,7 @@ namespace CrazyRL
     {
         /// <summary>
         /// Funkcja main programu. Odpowiedzialna jedynie za uruchomienie okna programu.
-        /// </summary> fiensonfsoienfoi
+        /// </summary>
         [STAThread]
         static void Main()
         {
